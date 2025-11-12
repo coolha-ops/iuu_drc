@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>원양어선 EM 모니터링</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 헤더 -->
+    <header class="header">
+        <h1 class="title">원양어선 EM 모니터링</h1>
+        <nav class="tabs">
+            <button class="tab">옵서버 Review</button>
+            <button class="tab">데이터 분석</button>
+            <button class="tab">조업 결과</button>
+            <button class="tab">장비 상태</button>
+            <button class="tab">선박 모니터링</button>
+        </nav>
+        <button class="settings-btn" title="환경 설정">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M12 1v4m0 14v4M5.64 5.64l2.83 2.83m8.49 8.49l2.83 2.83M1 12h4m14 0h4M5.64 18.36l2.83-2.83m8.49-8.49l2.83-2.83"></path>
+            </svg>
+        </button>
+    </header>
+
+    <!-- 메인 컨텐츠 -->
+    <main class="main-content">
+        <!-- 상단 통계 섹션 -->
+        <section class="stats-section">
+            <!-- 어획량 통계 -->
+            <div class="stat-box stat-box-with-chart">
+                <h3>어획량 통계</h3>
+                <div class="stat-content-wrapper">
+                    <div class="stat-chart-area">
+                        <h4>어종별 비율</h4>
+                        <div class="species-chart">
+                            <svg viewBox="0 0 100 100" class="donut-chart">
+                                <circle cx="50" cy="50" r="40" fill="none" stroke="#e9ecef" stroke-width="8"/>
+                                <circle cx="50" cy="50" r="40" fill="none" stroke="#4a90e2" stroke-width="8" 
+                                        stroke-dasharray="75.4 188.5" stroke-dashoffset="0" transform="rotate(-90 50 50)"/>
+                                <circle cx="50" cy="50" r="40" fill="none" stroke="#6bb3ff" stroke-width="8" 
+                                        stroke-dasharray="50.3 188.5" stroke-dashoffset="-75.4" transform="rotate(-90 50 50)"/>
+                                <circle cx="50" cy="50" r="40" fill="none" stroke="#95c5ff" stroke-width="8" 
+                                        stroke-dasharray="62.8 188.5" stroke-dashoffset="-125.7" transform="rotate(-90 50 50)"/>
+                                <text x="50" y="50" text-anchor="middle" dominant-baseline="middle" font-size="10" fill="#2c3e50" font-weight="600">비율</text>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="stat-items">
+                        <div class="stat-item">
+                            <span class="stat-label">Target</span>
+                            <span class="stat-value">100</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Bycatch</span>
+                            <span class="stat-value">-</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">ETC</span>
+                            <span class="stat-value">-</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 장비 가동률 -->
+            <div class="stat-box stat-box-with-chart">
+                <h3>장비 가동률</h3>
+                <div class="stat-content-wrapper">
+                    <div class="stat-chart-area">
+                        <h4>전체 가동률</h4>
+                        <div class="equipment-circle">
+                            <div class="circle-progress-small" style="--progress: 85%"></div>
+                            <span class="circle-value-small">85%</span>
+                        </div>
+                    </div>
+                    <div class="stat-items">
+                        <div class="stat-item equipment-list">
+                            <span class="stat-label">엣지컴퓨터</span>
+                            <span class="stat-value">92%</span>
+                        </div>
+                        <div class="stat-item equipment-list">
+                            <span class="stat-label">카메라</span>
+                            <span class="stat-value">88%</span>
+                        </div>
+                        <div class="stat-item equipment-list">
+                            <span class="stat-label">블랙박스</span>
+                            <span class="stat-value">85%</span>
+                        </div>
+                        <div class="stat-item equipment-list">
+                            <span class="stat-label">스토리지</span>
+                            <span class="stat-value">75%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- IUU 통계 -->
+            <div class="stat-box">
+                <h3>IUU 통계</h3>
+                <div class="stat-items">
+                    <div class="stat-item">
+                        <span class="stat-label">금일 몇 건</span>
+                        <span class="stat-value">-</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">지금까지 몇 건</span>
+                        <span class="stat-value">-</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">침범 몇 개</span>
+                        <span class="stat-value">-</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">보고 몇 개</span>
+                        <span class="stat-value">-</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">불법 몇 개</span>
+                        <span class="stat-value">-</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 옵서버 검토 현황 -->
+            <div class="stat-box">
+                <h3>옵서버 검토 현황</h3>
+                <div class="stat-items">
+                    <div class="stat-item">
+                        <span class="stat-label">검토 대기</span>
+                        <span class="stat-value">-</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">검토 완료</span>
+                        <span class="stat-value">-</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">검토 진행률</span>
+                        <span class="stat-value">-</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">평균 검토 시간</span>
+                        <span class="stat-value">-</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">검토 정확도</span>
+                        <span class="stat-value">-</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 데이터/AI 섹션 및 활동 선박 섹션 -->
+        <section class="data-vessel-section">
+            <!-- 왼쪽 80%: 데이터/AI 카드들 -->
+            <div class="data-ai-section">
+                <!-- 위쪽 4열 -->
+                <div class="charts-section">
+                    <div class="chart-box">
+                        <h3>데이터 수집량</h3>
+                        <div class="chart-placeholder">
+                            <div class="chart-bars">
+                                <div class="bar" style="height: 60%"></div>
+                                <div class="bar" style="height: 80%"></div>
+                                <div class="bar" style="height: 45%"></div>
+                                <div class="bar" style="height: 90%"></div>
+                                <div class="bar" style="height: 70%"></div>
+                                <div class="bar" style="height: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chart-box">
+                        <h3>데이터 검증률</h3>
+                        <div class="chart-placeholder">
+                            <div class="chart-circle">
+                                <div class="circle-progress" style="--progress: 75%"></div>
+                                <span class="circle-value">75%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chart-box">
+                        <h3>조업 성과 요약</h3>
+                        <div class="chart-placeholder">
+                            <div class="chart-bars">
+                                <div class="bar" style="height: 60%"></div>
+                                <div class="bar" style="height: 75%"></div>
+                                <div class="bar" style="height: 80%"></div>
+                                <div class="bar" style="height: 70%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chart-box">
+                        <h3>AI 모델 성능</h3>
+                        <div class="chart-placeholder">
+                            <div class="chart-line">
+                                <svg viewBox="0 0 200 100" class="line-chart">
+                                    <polyline points="10,80 40,60 70,50 100,40 130,35 160,30 190,25" 
+                                             fill="none" stroke="#4a90e2" stroke-width="2"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 아래쪽 3열 -->
+                <div class="details-section">
+                    <div class="detail-box">
+                        <h3>데이터 수집 및 전처리</h3>
+                        <div class="detail-content">
+                            <div class="detail-item">
+                                <h4>데이터 수집 현황</h4>
+                                <div class="mini-chart">
+                                    <div class="mini-bar" style="height: 50%"></div>
+                                    <div class="mini-bar" style="height: 70%"></div>
+                                    <div class="mini-bar" style="height: 60%"></div>
+                                    <div class="mini-bar" style="height: 80%"></div>
+                                </div>
+                            </div>
+                            <div class="detail-item">
+                                <h4>전처리 상태</h4>
+                                <span class="detail-value">완료/진행중/대기</span>
+                            </div>
+                            <div class="detail-item">
+                                <h4>데이터 품질 점수</h4>
+                                <span class="detail-value">-</span>
+                            </div>
+                            <div class="detail-item">
+                                <h4>저장소 사용률</h4>
+                                <span class="detail-value">-</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="detail-box">
+                        <h3>모델 훈련 및 평가</h3>
+                        <div class="detail-content">
+                            <div class="detail-item">
+                                <h4>학습 데이터 비율</h4>
+                                <div class="ratio-box">
+                                    <span>Train 70% / Test 20% / Val 10%</span>
+                                </div>
+                            </div>
+                            <div class="detail-item">
+                                <h4>훈련 진행률</h4>
+                                <span class="detail-value">-</span>
+                            </div>
+                            <div class="detail-item">
+                                <h4>모델 평가 결과</h4>
+                                <div class="evaluation-results">
+                                    <span>정확도: -</span>
+                                    <span>F1-Score: -</span>
+                                </div>
+                            </div>
+                            <div class="detail-item">
+                                <h4>하이퍼파라미터 튜닝</h4>
+                                <span class="detail-value">최적화 진행중</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="detail-box">
+                        <h3>AI 모델 증강</h3>
+                        <div class="detail-content">
+                            <div class="detail-item full-width">
+                                <h4>버전별 모델 성능 비교</h4>
+                                <div class="model-comparison">
+                                    <div class="model-version">
+                                        <span class="version-label">v1.0</span>
+                                        <div class="version-bar">
+                                            <div class="version-fill" style="width: 60%"></div>
+                                        </div>
+                                        <span class="version-score">60%</span>
+                                    </div>
+                                    <div class="model-version">
+                                        <span class="version-label">v1.1</span>
+                                        <div class="version-bar">
+                                            <div class="version-fill" style="width: 75%"></div>
+                                        </div>
+                                        <span class="version-score">75%</span>
+                                    </div>
+                                    <div class="model-version">
+                                        <span class="version-label">v1.2</span>
+                                        <div class="version-bar">
+                                            <div class="version-fill" style="width: 85%"></div>
+                                        </div>
+                                        <span class="version-score">85%</span>
+                                    </div>
+                                    <div class="model-version">
+                                        <span class="version-label">v2.0</span>
+                                        <div class="version-bar">
+                                            <div class="version-fill" style="width: 92%"></div>
+                                        </div>
+                                        <span class="version-score">92%</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="detail-item">
+                                <h4>실시간 탐지 정확도</h4>
+                                <span class="detail-value">-</span>
+                            </div>
+                            <div class="detail-item">
+                                <h4>위양성/위음성률</h4>
+                                <span class="detail-value">-</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 오른쪽 20%: 활동 선박 (지도 + 선박 리스트) -->
+            <div class="vessel-section">
+                <!-- 위 60%: 지도 -->
+                <div class="map-container">
+                    <div class="map-placeholder">
+                        <!-- 어선 통계 카드 (지도 위) -->
+                        <div class="vessel-stat-overlay">
+                            <h3>어선 통계</h3>
+                            <div class="vessel-stat-items">
+                                <div class="vessel-stat-item">
+                                    <span class="vessel-stat-label">조업중</span>
+                                    <span class="vessel-stat-value">-</span>
+                                </div>
+                                <div class="vessel-stat-item">
+                                    <span class="vessel-stat-label">비조업중</span>
+                                    <span class="vessel-stat-value">-</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="map-controls">
+                            <button class="map-btn">+</button>
+                            <button class="map-btn">-</button>
+                            <div class="compass">N</div>
+                        </div>
+                        <div class="map-dots">
+                            <div class="map-dot" style="top: 20%; left: 30%; background: #ff6b6b"></div>
+                            <div class="map-dot" style="top: 25%; left: 35%; background: #4ecdc4"></div>
+                            <div class="map-dot" style="top: 30%; left: 40%; background: #ffe66d"></div>
+                            <div class="map-dot" style="top: 35%; left: 45%; background: #ff6b6b"></div>
+                            <div class="map-dot" style="top: 40%; left: 50%; background: #4ecdc4"></div>
+                            <div class="map-dot" style="top: 45%; left: 55%; background: #ffe66d"></div>
+                            <div class="map-dot" style="top: 50%; left: 60%; background: #ff6b6b"></div>
+                            <div class="map-dot" style="top: 55%; left: 65%; background: #4ecdc4"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 아래 40%: 선박 리스트 -->
+                <div class="vessel-list">
+                    <h3>회사별 활동 선박 (103)</h3>
+                    <div class="vessel-list-content">
+                        <div class="company-group">
+                            <div class="company-header" onclick="toggleCompany(this)">
+                                <span class="toggle-icon">▼</span>
+                                <input type="checkbox" id="company1" checked onclick="event.stopPropagation()">
+                                <label for="company1">동원산업 (35)</label>
+                            </div>
+                            <div class="vessel-items">
+                                <div class="vessel-item">
+                                    <input type="checkbox" id="vessel1" checked>
+                                    <span class="vessel-color" style="background: #ff6b6b"></span>
+                                    <label for="vessel1">[동원]121 강제안을</label>
+                                </div>
+                                <div class="vessel-item">
+                                    <input type="checkbox" id="vessel2" checked>
+                                    <span class="vessel-color" style="background: #4ecdc4"></span>
+                                    <label for="vessel2">[동원]미래로치</label>
+                                </div>
+                                <div class="vessel-item">
+                                    <input type="checkbox" id="vessel3" checked>
+                                    <span class="vessel-color" style="background: #ffe66d"></span>
+                                    <label for="vessel3">[동원]본 아미 | 참치/신당</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="company-group">
+                            <div class="company-header" onclick="toggleCompany(this)">
+                                <span class="toggle-icon">▼</span>
+                                <input type="checkbox" id="company2" checked onclick="event.stopPropagation()">
+                                <label for="company2">사조산업 (31)</label>
+                            </div>
+                            <div class="vessel-items">
+                                <div class="vessel-item">
+                                    <input type="checkbox" id="vessel4" checked>
+                                    <span class="vessel-color" style="background: #ff6b6b"></span>
+                                    <label for="vessel4">[사조]콘코디아 지선</label>
+                                </div>
+                                <div class="vessel-item">
+                                    <input type="checkbox" id="vessel5" checked>
+                                    <span class="vessel-color" style="background: #4ecdc4"></span>
+                                    <label for="vessel5">[사조]2315</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="company-group">
+                            <div class="company-header" onclick="toggleCompany(this)">
+                                <span class="toggle-icon">▼</span>
+                                <input type="checkbox" id="company3" checked onclick="event.stopPropagation()">
+                                <label for="company3">신라교역 (24)</label>
+                            </div>
+                            <div class="vessel-items">
+                            </div>
+                        </div>
+                        <div class="company-group">
+                            <div class="company-header" onclick="toggleCompany(this)">
+                                <span class="toggle-icon">▼</span>
+                                <input type="checkbox" id="company4" checked onclick="event.stopPropagation()">
+                                <label for="company4">○○산업 (13)</label>
+                            </div>
+                            <div class="vessel-items">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 최근 활동 섹션 -->
+        <section class="recent-section">
+            <div class="recent-box">
+                <h3>최근 조업 내용</h3>
+                <div class="recent-content">
+                    <p class="empty-placeholder">내용 없음</p>
+                </div>
+            </div>
+            <div class="recent-box">
+                <h3>최근 IUU 위반 내용</h3>
+                <div class="recent-content">
+                    <p class="empty-placeholder">내용 없음</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        function toggleCompany(header) {
+            const companyGroup = header.parentElement;
+            const vesselItems = companyGroup.querySelector('.vessel-items');
+            const toggleIcon = header.querySelector('.toggle-icon');
+            
+            companyGroup.classList.toggle('collapsed');
+            
+            if (companyGroup.classList.contains('collapsed')) {
+                toggleIcon.textContent = '▶';
+            } else {
+                toggleIcon.textContent = '▼';
+            }
+        }
+    </script>
+</body>
+</html>
+

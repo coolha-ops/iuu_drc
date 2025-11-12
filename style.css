@@ -1,0 +1,1000 @@
+/* 기본 리셋 및 설정 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 공통 여백/타이포 스케일 */
+:root {
+    --space-1: 6px;
+    --space-2: 10px;
+    --space-3: 14px;
+    --space-4: 18px;
+    --label-color: #6b7280;   /* 중성 회색 */
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f5f5f5;
+    color: #333;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* 헤더 */
+.header {
+    background: #ffffff;
+    border-bottom: 2px solid #e0e0e0;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 60px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.title {
+    position: absolute;
+    left: 20px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.settings-btn {
+    position: absolute;
+    right: 20px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #495057;
+    transition: all 0.2s;
+    border-radius: 4px;
+}
+
+.settings-btn:hover {
+    background: #f8f9fa;
+    color: #2c3e50;
+}
+
+.tabs {
+    display: flex;
+    gap: 15px;
+}
+
+.tab {
+    padding: 8px 16px;
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #495057;
+    transition: all 0.2s;
+}
+
+.tab:hover {
+    background: #e9ecef;
+    border-color: #adb5bd;
+}
+
+/* 메인 컨텐츠 */
+.main-content {
+    height: calc(100vh - 60px);
+    padding: 15px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* 상단 통계 섹션 */
+.stats-section {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    height: 180px;
+    flex-shrink: 0;
+}
+
+.stat-box {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    padding: var(--space-2);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    overflow: hidden;
+    justify-content: flex-start;
+}
+
+.stat-box > .stat-items {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-1);
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.stat-box h3 {
+    font-size: 13px;
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: var(--space-1);
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.2;
+    flex-shrink: 0;
+}
+
+.stat-content-wrapper {
+    display: flex;
+    gap: 10px;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+}
+
+/* 차트 영역 옆 텍스트 스택의 간격 개선 */
+.stat-box-with-chart .stat-content-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;   /* 차트 영역 | 텍스트 영역 */
+    gap: var(--space-2);
+}
+
+.stat-chart-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    min-width: 70px;
+}
+
+.stat-chart-area h4 {
+    font-size: 10px;
+    font-weight: 500;
+    color: #6c757d;
+    margin-bottom: 3px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.2;
+}
+
+/* 카드 안 리스트(모든 stat-items 공통) */
+.stat-items {
+    display: grid;
+    grid-template-columns: 1fr;    /* 한 줄 한 아이템 */
+    gap: var(--space-2);           /* 아이템 간 수직 간격 */
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+}
+
+/* 한 줄짜리 라벨-값 행 (공통 패턴) */
+.stat-item,
+.vessel-stat-item,
+.vessel-item,
+.equipment-list {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);           /* ← 라벨과 값 사이 간격 축소 */
+    padding: 2px 0;                /* 행 자체의 세로 여백 축소 */
+    min-width: 0;
+}
+
+/* 라벨: 왼쪽을 넉넉히 차지하도록 */
+.stat-label {
+    flex: 1 1 auto;                /* 남는 공간 차지 */
+    min-width: 0;                  /* 길어진 라벨도 줄바꿈 허용 */
+    color: var(--label-color);
+    font-size: clamp(11px, 0.85rem, 13px);
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* 값: 우측 정렬 + 고정 폭 느낌 (숫자 정렬 안정감) */
+.stat-value {
+    flex: 0 0 auto;
+    min-width: 60px;               /* 필요시 72~88px로 조정 */
+    text-align: right;
+    font-weight: 600;
+    font-size: clamp(12px, 0.95rem, 15px); /* 라벨보다 살짝 크게 */
+    line-height: 1.2;
+    color: #2c3e50;
+    white-space: nowrap;
+}
+
+/* 어종별 비율 도넛 차트 */
+.species-chart {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto;
+}
+
+.donut-chart {
+    width: 100%;
+    height: 100%;
+}
+
+/* 도넛 중앙 텍스트("비율")도 소폭 키움 */
+.donut-chart text {
+    font-size: 11px; /* 필요시 12~13px 조정 */
+    font-weight: 600;
+    fill: #334155;
+}
+
+/* 장비 가동률 원형 차트 */
+.equipment-circle {
+    position: relative;
+    width: 55px;
+    height: 55px;
+    margin: 0 auto;
+}
+
+.circle-progress-small {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg, #4a90e2 0% var(--progress), #e9ecef var(--progress) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.circle-progress-small::before {
+    content: '';
+    position: absolute;
+    width: 70%;
+    height: 70%;
+    background: #ffffff;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.circle-value-small {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 700;
+    font-size: clamp(14px, 1.1rem, 18px);
+    color: #2c3e50;
+    z-index: 1;
+}
+
+/* 장비 리스트(가동률)도 같은 룰로, 살짝 값 강조 */
+.stat-item.equipment-list .stat-value {
+    min-width: 70px;
+    font-weight: 700;
+}
+
+/* 데이터/AI 섹션 및 활동 선박 섹션 */
+.data-vessel-section {
+    display: grid;
+    grid-template-columns: 70% 30%;
+    gap: 12px;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+}
+
+/* 왼쪽 80%: 데이터/AI 카드들 */
+.data-ai-section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-height: 0;
+    overflow: hidden;
+}
+
+/* 중간 차트 섹션 */
+.charts-section {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    flex: 4;
+    min-height: 0;
+}
+
+.chart-box {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    padding: var(--space-2);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    justify-content: flex-start;
+    overflow: hidden;
+}
+
+.chart-box h3 {
+    font-size: clamp(13px, 1rem, 15px);
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: var(--space-1);
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.2;
+    flex-shrink: 0;
+    height: auto;
+    min-height: 20px;
+}
+
+.chart-placeholder {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 0;
+    max-height: 100%;
+    overflow: hidden;
+    width: 100%;
+}
+
+.chart-bars {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    width: 100%;
+    height: 100%;
+    gap: 4px;
+    padding: 2px 0;
+}
+
+.bar {
+    flex: 1;
+    background: linear-gradient(to top, #4a90e2, #6bb3ff);
+    border-radius: 3px 3px 0 0;
+    min-height: 20px;
+    max-height: 100%;
+    width: 100%;
+}
+
+.chart-circle {
+    position: relative;
+    width: clamp(60px, 70%, 85px);
+    height: clamp(60px, 70%, 85px);
+    margin: 0 auto;
+    max-width: 100%;
+    max-height: 100%;
+    aspect-ratio: 1;
+}
+
+.circle-progress {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg, #4a90e2 0% var(--progress), #e9ecef var(--progress) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.circle-progress::before {
+    content: '';
+    position: absolute;
+    width: 70%;
+    height: 70%;
+    background: #ffffff;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* 작은 원형/도넛 차트 중앙 숫자 가독성 */
+.circle-value {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 700;
+    font-size: clamp(14px, 1.1rem, 18px);
+    color: #2c3e50;
+    z-index: 1;
+}
+
+.chart-line {
+    width: 100%;
+    height: 100%;
+}
+
+.line-chart {
+    width: 100%;
+    height: 100%;
+}
+
+/* 하단 상세 섹션 */
+.details-section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    flex: 6;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.detail-box {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    padding: var(--space-2);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    min-height: 0;
+    justify-content: flex-start;
+}
+
+.detail-box h3 {
+    font-size: clamp(12px, 0.95rem, 14px);
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: var(--space-1);
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 2px;
+    flex-shrink: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.2;
+    min-height: 20px;
+}
+
+.detail-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    flex: 1;
+    min-height: 0;
+    justify-content: flex-start;
+    overflow: hidden;
+    max-height: 100%;
+    width: 100%;
+}
+
+.detail-item {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    align-items: flex-start;
+    flex-shrink: 0;
+    min-width: 0;
+    width: 100%;
+}
+
+.detail-item.full-width {
+    width: 100%;
+}
+
+.detail-item h4 {
+    font-size: clamp(12px, 0.95rem, 14px);
+    font-weight: 500;
+    color: #6c757d;
+    line-height: 1.3;
+    margin-bottom: 3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.stat-item h4 {
+    font-size: 9px;
+    font-weight: 500;
+    color: #6c757d;
+    margin-bottom: 2px;
+    text-align: center;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.species-item {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 4px;
+}
+
+.detail-value {
+    font-size: clamp(12px, 0.95rem, 14px);
+    font-weight: 600;
+    color: #2c3e50;
+    line-height: 1.3;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.mini-chart {
+    display: flex;
+    align-items: flex-end;
+    gap: 3px;
+    height: clamp(28px, 4vh, 40px);
+    padding: 2px 0;
+    max-height: 100%;
+    flex-shrink: 0;
+    width: 100%;
+}
+
+.mini-bar {
+    flex: 1;
+    background: linear-gradient(to top, #4a90e2, #6bb3ff);
+    border-radius: 2px 2px 0 0;
+    min-height: 10px;
+}
+
+.ratio-box {
+    padding: 5px;
+    background: #f8f9fa;
+    border-radius: 4px;
+    font-size: clamp(10px, 0.85rem, 12px);
+    color: #6c757d;
+    text-align: center;
+    line-height: 1.3;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+
+.cause-list {
+    font-size: 8px;
+    color: #6c757d;
+    padding: 3px;
+    background: #f8f9fa;
+    border-radius: 4px;
+    line-height: 1.1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.evaluation-results {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    font-size: clamp(10px, 0.85rem, 12px);
+    color: #6c757d;
+    line-height: 1.3;
+    width: 100%;
+}
+
+.evaluation-results span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* AI 모델 증강 */
+.model-comparison {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 2px 0;
+    width: 100%;
+}
+
+.model-version {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    min-width: 0;
+}
+
+.version-label {
+    font-size: clamp(10px, 0.85rem, 12px);
+    font-weight: 600;
+    color: #495057;
+    min-width: 35px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.version-bar {
+    flex: 1;
+    height: clamp(14px, 2vh, 18px);
+    background: #e9ecef;
+    border-radius: 6px;
+    overflow: hidden;
+    min-width: 0;
+}
+
+.version-fill {
+    height: 100%;
+    background: linear-gradient(to right, #4a90e2, #6bb3ff);
+    border-radius: 6px;
+    transition: width 0.3s;
+}
+
+.version-score {
+    font-size: clamp(10px, 0.85rem, 12px);
+    font-weight: 600;
+    color: #2c3e50;
+    min-width: 35px;
+    text-align: right;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+/* 오른쪽 30%: 활동 선박 섹션 */
+.vessel-section {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.vessel-list {
+    overflow: hidden;
+    min-height: 0;
+    flex: 0 0 40%;
+    display: flex;
+    flex-direction: column;
+}
+
+.vessel-list-content {
+    flex: 1;
+    overflow: hidden;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.vessel-list h3 {
+    font-size: 10px;
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: 6px;
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 3px;
+    flex-shrink: 0;
+    line-height: 1.1;
+}
+
+.company-group {
+    margin-bottom: 6px;
+    flex-shrink: 0;
+}
+
+.company-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 4px;
+    font-size: 10px;
+    font-weight: 600;
+    color: #495057;
+    line-height: 1.1;
+    cursor: pointer;
+    user-select: none;
+    padding: 2px 0;
+}
+
+.company-header:hover {
+    background: #f8f9fa;
+    border-radius: 3px;
+}
+
+.company-header input[type="checkbox"] {
+    cursor: pointer;
+}
+
+.toggle-icon {
+    font-size: 8px;
+    color: #6c757d;
+    transition: transform 0.2s;
+    flex-shrink: 0;
+    width: 12px;
+    text-align: center;
+    display: inline-block;
+}
+
+.company-group.collapsed .toggle-icon {
+    transform: rotate(-90deg);
+}
+
+.vessel-items {
+    margin-left: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, opacity 0.2s, margin 0.3s;
+    max-height: 500px;
+    opacity: 1;
+}
+
+.company-group.collapsed .vessel-items {
+    max-height: 0;
+    opacity: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.vessel-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 9px;
+    color: #6c757d;
+    line-height: 1.1;
+    flex-shrink: 0;
+}
+
+/* 선박 리스트 한 줄 높이/간격 보정 */
+.vessel-item label {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex: 1;
+    min-width: 0;
+    line-height: 1.35;
+}
+
+.vessel-item input[type="checkbox"] {
+    cursor: pointer;
+}
+
+.vessel-color {
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+    display: inline-block;
+}
+
+.map-container {
+    position: relative;
+    overflow: hidden;
+    min-height: 0;
+    flex: 0 0 60%;
+    display: flex;
+    flex-direction: column;
+}
+
+.map-placeholder {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: #d0d0d0;
+    background-image: 
+        linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,0.05) 1px, transparent 1px);
+    background-size: 20px 20px;
+    border-radius: 4px;
+    flex: 1;
+    min-height: 0;
+}
+
+/* 지도 위 어선 통계 오버레이 */
+.vessel-stat-overlay {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 6px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    z-index: 5;
+    min-width: 100px;
+    max-width: 120px;
+    overflow: hidden;
+}
+
+.vessel-stat-overlay h3 {
+    font-size: 10px;
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: 4px;
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.2;
+}
+
+/* 선박 통계 오버레이 라벨-값 간격 정리 */
+.vessel-stat-items {
+    display: grid;
+    gap: var(--space-2);
+}
+
+/* vessel-stat-item은 공통 패턴(.stat-item)에 포함되어 있음 */
+
+.vessel-stat-label {
+    font-size: 9px;
+    color: var(--label-color);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.2;
+    max-width: 60%;
+}
+
+.vessel-stat-item .vessel-stat-label {
+    color: var(--label-color);
+}
+
+.vessel-stat-value {
+    font-size: 10px;
+    font-weight: 600;
+    color: #2c3e50;
+    white-space: nowrap;
+    line-height: 1.2;
+    flex-shrink: 0;
+}
+
+.map-controls {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    z-index: 10;
+}
+
+.map-btn {
+    width: 30px;
+    height: 30px;
+    background: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #495057;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.map-btn:hover {
+    background: #f8f9fa;
+}
+
+.compass {
+    width: 30px;
+    height: 30px;
+    background: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+    color: #495057;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.map-dots {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.map-dot {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    cursor: pointer;
+}
+
+/* 최근 활동 섹션 */
+.recent-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    height: 150px;
+    flex-shrink: 0;
+}
+
+.recent-box {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    padding: var(--space-3);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    justify-content: flex-start;
+    overflow: hidden;
+}
+
+.recent-box h3 {
+    font-size: clamp(11px, 0.85rem, 13px);
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: var(--space-2);
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.2;
+    flex-shrink: 0;
+}
+
+.recent-content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 0;
+    max-height: 100%;
+    overflow: hidden;
+}
+
+.empty-placeholder {
+    font-size: clamp(10px, 0.8rem, 12px);
+    color: #adb5bd;
+    font-style: italic;
+    line-height: 1.3;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+/* 스크롤바 스타일링 */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
