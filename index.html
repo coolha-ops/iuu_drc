@@ -187,251 +187,272 @@
 
         <!-- AI 영역 및 활동 선박 섹션 -->
         <section class="data-vessel-section">
-            <!-- 왼쪽 70%: AI 영역 (9개 카드) -->
+            <!-- 왼쪽 70%: AI 영역 (5개 카드) -->
             <div class="ai-section">
-                <div class="ai-grid">
-                    <!-- 큰 카드들 (그래프 필요) -->
-                    <div class="chart-box ai-card-large">
-                        <h3>데이터 수집량</h3>
-                        <div class="chart-placeholder">
-                            <div class="chart-bars">
-                                <div class="bar" style="height: 60%"></div>
-                                <div class="bar" style="height: 80%"></div>
-                                <div class="bar" style="height: 45%"></div>
-                                <div class="bar" style="height: 90%"></div>
-                                <div class="bar" style="height: 70%"></div>
-                                <div class="bar" style="height: 85%"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="chart-box ai-card-large">
-                        <h3>데이터 검증률</h3>
-                        <div class="chart-placeholder">
-                            <div class="chart-circle">
-                                <div class="circle-progress" style="--progress: 75%"></div>
-                                <span class="circle-value">75%</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="chart-box ai-card-large">
-                        <h3>AI 모델 성능</h3>
-                        <div class="chart-placeholder">
-                            <div class="chart-line">
-                                <svg viewBox="0 0 200 100" class="line-chart">
-                                    <polyline points="10,80 40,60 70,50 100,40 130,35 160,30 190,25" 
-                                             fill="none" stroke="#8b5cf6" stroke-width="2"/>
+                <!-- 상단 3개 카드 그리드 -->
+                <div class="ai-grid-top">
+                    <!-- 1. 데이터 수집 현황: 데이터 수집량 + 데이터 수집 및 전처리 통합 -->
+                    <div class="chart-box ai-card-large ai-card-top">
+                        <h3>데이터 수집 현황</h3>
+                        <div class="collection-content">
+                            <div class="collection-chart">
+                                <svg viewBox="0 0 400 200" class="collection-line-chart">
+                                    <!-- X축 -->
+                                    <line x1="40" y1="160" x2="360" y2="160" stroke="var(--gray-300)" stroke-width="1"/>
+                                    <!-- Y축 -->
+                                    <line x1="40" y1="20" x2="40" y2="160" stroke="var(--gray-300)" stroke-width="1"/>
+                                    <!-- 수집됨 라인 (실선, 파란색) -->
+                                    <polyline points="40,140 80,120 120,110 160,100 200,90 240,85 280,80 320,75" 
+                                             fill="none" stroke="var(--chart-teal)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <circle cx="40" cy="140" r="4" fill="var(--chart-teal)"/>
+                                    <circle cx="80" cy="120" r="4" fill="var(--chart-teal)"/>
+                                    <circle cx="120" cy="110" r="4" fill="var(--chart-teal)"/>
+                                    <circle cx="160" cy="100" r="4" fill="var(--chart-teal)"/>
+                                    <circle cx="200" cy="90" r="4" fill="var(--chart-teal)"/>
+                                    <circle cx="240" cy="85" r="4" fill="var(--chart-teal)"/>
+                                    <circle cx="280" cy="80" r="4" fill="var(--chart-teal)"/>
+                                    <circle cx="320" cy="75" r="4" fill="var(--chart-teal)"/>
+                                    <!-- 목표 라인 (점선, 주황색) -->
+                                    <polyline points="40,130 80,110 120,100 160,90 200,80 240,75 280,70 320,65" 
+                                             fill="none" stroke="var(--chart-orange)" stroke-width="2" stroke-dasharray="5,5" stroke-linecap="round"/>
+                                    <polygon points="40,130 45,125 50,130 45,135" fill="var(--chart-orange)"/>
+                                    <polygon points="80,110 85,105 90,110 85,115" fill="var(--chart-orange)"/>
+                                    <polygon points="120,100 125,95 130,100 125,105" fill="var(--chart-orange)"/>
+                                    <polygon points="160,90 165,85 170,90 165,95" fill="var(--chart-orange)"/>
+                                    <polygon points="200,80 205,75 210,80 205,85" fill="var(--chart-orange)"/>
+                                    <polygon points="240,75 245,70 250,75 245,80" fill="var(--chart-orange)"/>
+                                    <polygon points="280,70 285,65 290,70 285,75" fill="var(--chart-orange)"/>
+                                    <polygon points="320,65 325,60 330,65 325,70" fill="var(--chart-orange)"/>
+                                    <!-- 범례 -->
+                                    <g transform="translate(250, 30)">
+                                        <line x1="0" y1="0" x2="30" y2="0" stroke="var(--chart-teal)" stroke-width="2.5"/>
+                                        <circle cx="15" cy="0" r="3" fill="var(--chart-teal)"/>
+                                        <text x="35" y="4" font-size="12" fill="var(--gray-700)">수집됨</text>
+                                        <line x1="100" y1="0" x2="130" y2="0" stroke="var(--chart-orange)" stroke-width="2" stroke-dasharray="5,5"/>
+                                        <polygon points="115,0 120,-5 125,0 120,5" fill="var(--chart-orange)"/>
+                                        <text x="135" y="4" font-size="12" fill="var(--gray-700)">목표</text>
+                                    </g>
                                 </svg>
                             </div>
-                        </div>
-                    </div>
-
-                    <div class="chart-box ai-card-large">
-                        <h3>ML 파이프라인 상태</h3>
-                        <div class="pipeline-content">
-                            <div class="pipeline-steps">
-                                <div class="pipeline-step active">
-                                    <div class="step-icon">📥</div>
-                                    <span class="step-label">수집</span>
-                                    <span class="step-status">진행중</span>
+                            <div class="collection-stats">
+                                <div class="collection-stat-item">
+                                    <span class="collection-label">총 수집량</span>
+                                    <span class="collection-value">9,100</span>
                                 </div>
-                                <div class="pipeline-arrow">→</div>
-                                <div class="pipeline-step active">
-                                    <div class="step-icon">🔧</div>
-                                    <span class="step-label">전처리</span>
-                                    <span class="step-status">완료</span>
+                                <div class="collection-stat-item">
+                                    <span class="collection-label">목표량</span>
+                                    <span class="collection-value">10,000</span>
                                 </div>
-                                <div class="pipeline-arrow">→</div>
-                                <div class="pipeline-step active">
-                                    <div class="step-icon">📊</div>
-                                    <span class="step-label">분석</span>
-                                    <span class="step-status">완료</span>
-                                </div>
-                                <div class="pipeline-arrow">→</div>
-                                <div class="pipeline-step active">
-                                    <div class="step-icon">✨</div>
-                                    <span class="step-label">Augmentation</span>
-                                    <span class="step-status">진행중</span>
-                                </div>
-                                <div class="pipeline-arrow">→</div>
-                                <div class="pipeline-step">
-                                    <div class="step-icon">🎯</div>
-                                    <span class="step-label">훈련</span>
-                                    <span class="step-status">대기</span>
-                                </div>
-                                <div class="pipeline-arrow">→</div>
-                                <div class="pipeline-step">
-                                    <div class="step-icon">📈</div>
-                                    <span class="step-label">평가</span>
-                                    <span class="step-status">대기</span>
+                                <div class="collection-stat-item">
+                                    <span class="collection-label">달성률</span>
+                                    <span class="collection-value">91%</span>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="chart-box ai-card-large">
-                        <h3>데이터 Augmentation</h3>
-                        <div class="augmentation-content">
-                            <div class="augmentation-stats">
-                                <div class="aug-stat-item">
-                                    <span class="aug-label">원본 데이터</span>
-                                    <span class="aug-value">10,000</span>
-                                </div>
-                                <div class="aug-stat-item">
-                                    <span class="aug-label">증강 데이터</span>
-                                    <span class="aug-value">25,000</span>
-                                </div>
-                                <div class="aug-stat-item">
-                                    <span class="aug-label">증강 비율</span>
-                                    <span class="aug-value">250%</span>
-                                </div>
+                    <!-- 2. 모델 학습 성능: AI 모델 성능 + 모델 훈련 및 평가 통합 -->
+                    <div class="chart-box ai-card-large ai-card-top">
+                        <h3>모델 학습 성능</h3>
+                        <div class="performance-content">
+                            <div class="performance-chart">
+                                <svg viewBox="0 0 400 200" class="performance-line-chart">
+                                    <!-- X축 (Epoch) -->
+                                    <line x1="40" y1="160" x2="360" y2="160" stroke="var(--gray-300)" stroke-width="1"/>
+                                    <!-- Y축 (정확도/손실) -->
+                                    <line x1="40" y1="20" x2="40" y2="160" stroke="var(--gray-300)" stroke-width="1"/>
+                                    <!-- 정확도 라인 (녹색, 상승) -->
+                                    <polyline points="40,100 80,90 120,80 160,70 200,60 240,55 280,50 320,45" 
+                                             fill="none" stroke="var(--chart-green)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <circle cx="40" cy="100" r="4" fill="var(--chart-green)"/>
+                                    <circle cx="80" cy="90" r="4" fill="var(--chart-green)"/>
+                                    <circle cx="120" cy="80" r="4" fill="var(--chart-green)"/>
+                                    <circle cx="160" cy="70" r="4" fill="var(--chart-green)"/>
+                                    <circle cx="200" cy="60" r="4" fill="var(--chart-green)"/>
+                                    <circle cx="240" cy="55" r="4" fill="var(--chart-green)"/>
+                                    <circle cx="280" cy="50" r="4" fill="var(--chart-green)"/>
+                                    <circle cx="320" cy="45" r="4" fill="var(--chart-green)"/>
+                                    <!-- 손실 라인 (빨간색, 하락) -->
+                                    <polyline points="40,60 80,70 120,80 160,90 200,100 240,105 280,110 320,115" 
+                                             fill="none" stroke="#ef4444" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <circle cx="40" cy="60" r="4" fill="#ef4444"/>
+                                    <circle cx="80" cy="70" r="4" fill="#ef4444"/>
+                                    <circle cx="120" cy="80" r="4" fill="#ef4444"/>
+                                    <circle cx="160" cy="90" r="4" fill="#ef4444"/>
+                                    <circle cx="200" cy="100" r="4" fill="#ef4444"/>
+                                    <circle cx="240" cy="105" r="4" fill="#ef4444"/>
+                                    <circle cx="280" cy="110" r="4" fill="#ef4444"/>
+                                    <circle cx="320" cy="115" r="4" fill="#ef4444"/>
+                                    <!-- 범례 -->
+                                    <g transform="translate(250, 30)">
+                                        <line x1="0" y1="0" x2="30" y2="0" stroke="var(--chart-green)" stroke-width="2.5"/>
+                                        <circle cx="15" cy="0" r="3" fill="var(--chart-green)"/>
+                                        <text x="35" y="4" font-size="12" fill="var(--gray-700)">정확도</text>
+                                        <line x1="100" y1="0" x2="130" y2="0" stroke="#ef4444" stroke-width="2.5"/>
+                                        <circle cx="115" cy="0" r="3" fill="#ef4444"/>
+                                        <text x="135" y="4" font-size="12" fill="var(--gray-700)">손실</text>
+                                    </g>
+                                </svg>
                             </div>
-                            <div class="augmentation-methods">
-                                <h4>적용 기법</h4>
-                                <div class="method-list">
-                                    <div class="method-item">
-                                        <span class="method-name">Rotation</span>
-                                        <div class="method-bar">
-                                            <div class="method-fill" style="width: 80%"></div>
-                                        </div>
-                                        <span class="method-percent">80%</span>
-                                    </div>
-                                    <div class="method-item">
-                                        <span class="method-name">Flip</span>
-                                        <div class="method-bar">
-                                            <div class="method-fill" style="width: 60%"></div>
-                                        </div>
-                                        <span class="method-percent">60%</span>
-                                    </div>
-                                    <div class="method-item">
-                                        <span class="method-name">Crop</span>
-                                        <div class="method-bar">
-                                            <div class="method-fill" style="width: 45%"></div>
-                                        </div>
-                                        <span class="method-percent">45%</span>
-                                    </div>
+                            <div class="performance-stats">
+                                <div class="performance-stat-item">
+                                    <span class="performance-label">최종 정확도</span>
+                                    <span class="performance-value">0.921</span>
+                                </div>
+                                <div class="performance-stat-item">
+                                    <span class="performance-label">F1-Score</span>
+                                    <span class="performance-value">0.895</span>
+                                </div>
+                                <div class="performance-stat-item">
+                                    <span class="performance-label">최종 손실</span>
+                                    <span class="performance-value">0.15</span>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- 일반 카드들 (텍스트/통계 중심) -->
-                    <div class="detail-box ai-card-small">
-                        <h3>조업 성과 요약</h3>
-                        <div class="detail-content">
-                            <div class="detail-item">
-                                <h4>총 조업량</h4>
-                                <span class="detail-value">-</span>
+                    <!-- 3. 데이터 품질 분포: 데이터 검증률 개선 -->
+                    <div class="chart-box ai-card-large ai-card-top">
+                        <h3>데이터 품질 분포</h3>
+                        <div class="quality-content">
+                            <div class="quality-chart">
+                                <div class="chart-circle">
+                                    <div class="circle-progress" style="--progress: 93.9%"></div>
+                                    <span class="circle-value">93.9%</span>
+                                </div>
                             </div>
-                            <div class="detail-item">
-                                <h4>평균 조업 시간</h4>
-                                <span class="detail-value">-</span>
+                            <div class="quality-distribution">
+                                <div class="quality-item">
+                                    <span class="quality-dot quality-normal"></span>
+                                    <span class="quality-label">정상</span>
+                                    <span class="quality-count">8,542</span>
+                                    <span class="quality-percent">93.9%</span>
+                                </div>
+                                <div class="quality-item">
+                                    <span class="quality-dot quality-warning"></span>
+                                    <span class="quality-label">경고</span>
+                                    <span class="quality-count">432</span>
+                                    <span class="quality-percent">4.7%</span>
+                                </div>
+                                <div class="quality-item">
+                                    <span class="quality-dot quality-error"></span>
+                                    <span class="quality-label">오류</span>
+                                    <span class="quality-count">126</span>
+                                    <span class="quality-percent">1.4%</span>
+                                </div>
                             </div>
-                            <div class="detail-item">
-                                <h4>성공률</h4>
-                                <span class="detail-value">-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 하단 2개 카드 그리드 -->
+                <div class="ai-grid-bottom">
+                    <!-- 4. 파이프라인 단계: ML 파이프라인 상태 + 데이터 Augmentation 통합 -->
+                    <div class="chart-box ai-card-regular">
+                        <h3>파이프라인 단계</h3>
+                        <div class="pipeline-enhanced-content">
+                            <div class="pipeline-steps-enhanced">
+                                <div class="pipeline-step-enhanced">
+                                    <div class="step-header">
+                                        <div class="step-icon">📥</div>
+                                        <span class="step-label">데이터 수집</span>
+                                    </div>
+                                    <div class="step-progress-bar">
+                                        <div class="step-progress-fill" style="width: 94%"></div>
+                                    </div>
+                                    <span class="step-progress-text">94%</span>
+                                </div>
+                                <div class="pipeline-step-enhanced">
+                                    <div class="step-header">
+                                        <div class="step-icon">🔧</div>
+                                        <span class="step-label">데이터 전처리</span>
+                                    </div>
+                                    <div class="step-progress-bar">
+                                        <div class="step-progress-fill" style="width: 87%"></div>
+                                    </div>
+                                    <span class="step-progress-text">87%</span>
+                                </div>
+                                <div class="pipeline-step-enhanced">
+                                    <div class="step-header">
+                                        <div class="step-icon">📊</div>
+                                        <span class="step-label">특징 추출</span>
+                                    </div>
+                                    <div class="step-progress-bar">
+                                        <div class="step-progress-fill" style="width: 91%"></div>
+                                    </div>
+                                    <span class="step-progress-text">91%</span>
+                                </div>
+                                <div class="pipeline-step-enhanced">
+                                    <div class="step-header">
+                                        <div class="step-icon">✨</div>
+                                        <span class="step-label">Augmentation</span>
+                                    </div>
+                                    <div class="step-progress-bar">
+                                        <div class="step-progress-fill" style="width: 78%"></div>
+                                    </div>
+                                    <span class="step-progress-text">78%</span>
+                                </div>
+                                <div class="pipeline-step-enhanced">
+                                    <div class="step-header">
+                                        <div class="step-icon">🎯</div>
+                                        <span class="step-label">모델 학습</span>
+                                    </div>
+                                    <div class="step-progress-bar">
+                                        <div class="step-progress-fill" style="width: 0%"></div>
+                                    </div>
+                                    <span class="step-progress-text">대기</span>
+                                </div>
+                                <div class="pipeline-step-enhanced">
+                                    <div class="step-header">
+                                        <div class="step-icon">📈</div>
+                                        <span class="step-label">모델 검증</span>
+                                    </div>
+                                    <div class="step-progress-bar">
+                                        <div class="step-progress-fill" style="width: 0%"></div>
+                                    </div>
+                                    <span class="step-progress-text">대기</span>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="detail-box ai-card-small">
-                        <h3>데이터 수집 및 전처리</h3>
-                        <div class="detail-content">
-                            <div class="detail-item">
-                                <h4>데이터 수집 현황</h4>
-                                <div class="mini-chart">
-                                    <div class="mini-bar" style="height: 50%"></div>
-                                    <div class="mini-bar" style="height: 70%"></div>
-                                    <div class="mini-bar" style="height: 60%"></div>
-                                    <div class="mini-bar" style="height: 80%"></div>
-                                </div>
+                    <!-- 5. 모델 관리: AI 모델 증강 유지 -->
+                    <div class="detail-box ai-card-regular">
+                        <h3>모델 관리</h3>
+                        <div class="model-management-content">
+                            <div class="model-version-header">
+                                <span class="current-model-label">현재 모델 정확도</span>
+                                <span class="current-model-value">92.1%</span>
                             </div>
-                            <div class="detail-item">
-                                <h4>전처리 상태</h4>
-                                <span class="detail-value">완료/진행중/대기</span>
-                            </div>
-                            <div class="detail-item">
-                                <h4>데이터 품질 점수</h4>
-                                <span class="detail-value">-</span>
-                            </div>
-                            <div class="detail-item">
-                                <h4>저장소 사용률</h4>
-                                <span class="detail-value">-</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="detail-box ai-card-small">
-                        <h3>모델 훈련 및 평가</h3>
-                        <div class="detail-content">
-                            <div class="detail-item">
-                                <h4>학습 데이터 비율</h4>
-                                <div class="ratio-box">
-                                    <span>Train 70% / Test 20% / Val 10%</span>
-                                </div>
-                            </div>
-                            <div class="detail-item">
-                                <h4>훈련 진행률</h4>
-                                <span class="detail-value">-</span>
-                            </div>
-                            <div class="detail-item">
-                                <h4>모델 평가 결과</h4>
-                                <div class="evaluation-results">
-                                    <span>정확도: -</span>
-                                    <span>F1-Score: -</span>
-                                </div>
-                            </div>
-                            <div class="detail-item">
-                                <h4>하이퍼파라미터 튜닝</h4>
-                                <span class="detail-value">최적화 진행중</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="detail-box ai-card-small">
-                        <h3>AI 모델 증강</h3>
-                        <div class="detail-content">
-                            <div class="detail-item full-width">
-                                <h4>버전별 모델 성능 비교</h4>
-                                <div class="model-comparison">
-                                    <div class="model-version">
-                                        <span class="version-label">v1.0</span>
-                                        <div class="version-bar">
-                                            <div class="version-fill" style="width: 60%"></div>
-                                        </div>
-                                        <span class="version-score">60%</span>
+                            <div class="model-comparison">
+                                <div class="model-version">
+                                    <span class="version-label">v1.0</span>
+                                    <div class="version-bar">
+                                        <div class="version-fill" style="width: 60%"></div>
                                     </div>
-                                    <div class="model-version">
-                                        <span class="version-label">v1.1</span>
-                                        <div class="version-bar">
-                                            <div class="version-fill" style="width: 75%"></div>
-                                        </div>
-                                        <span class="version-score">75%</span>
-                                    </div>
-                                    <div class="model-version">
-                                        <span class="version-label">v1.2</span>
-                                        <div class="version-bar">
-                                            <div class="version-fill" style="width: 85%"></div>
-                                        </div>
-                                        <span class="version-score">85%</span>
-                                    </div>
-                                    <div class="model-version">
-                                        <span class="version-label">v2.0</span>
-                                        <div class="version-bar">
-                                            <div class="version-fill" style="width: 92%"></div>
-                                        </div>
-                                        <span class="version-score">92%</span>
-                                    </div>
+                                    <span class="version-score">60%</span>
                                 </div>
-                            </div>
-                            <div class="detail-item">
-                                <h4>실시간 탐지 정확도</h4>
-                                <span class="detail-value">-</span>
-                            </div>
-                            <div class="detail-item">
-                                <h4>위양성/위음성률</h4>
-                                <span class="detail-value">-</span>
+                                <div class="model-version">
+                                    <span class="version-label">v1.1</span>
+                                    <div class="version-bar">
+                                        <div class="version-fill" style="width: 75%"></div>
+                                    </div>
+                                    <span class="version-score">75%</span>
+                                </div>
+                                <div class="model-version">
+                                    <span class="version-label">v1.2</span>
+                                    <div class="version-bar">
+                                        <div class="version-fill" style="width: 85%"></div>
+                                    </div>
+                                    <span class="version-score">85%</span>
+                                </div>
+                                <div class="model-version">
+                                    <span class="version-label">v2.0</span>
+                                    <div class="version-bar">
+                                        <div class="version-fill" style="width: 92%"></div>
+                                    </div>
+                                    <span class="version-score">92%</span>
+                                </div>
                             </div>
                         </div>
                     </div>
