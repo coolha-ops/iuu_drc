@@ -104,6 +104,92 @@ body {
     transform: rotate(90deg);
 }
 
+.header-center {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+/* 검색 영역 */
+.search-area {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #ffffff;
+    border: 1.5px solid var(--border-color);
+    border-radius: 8px;
+    padding: 6px 8px;
+    transition: all 0.2s ease;
+}
+
+.search-area:focus-within {
+    border-color: var(--blue-light);
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+}
+
+.search-icon-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gray-600);
+    transition: all 0.2s ease;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+.search-icon-btn:hover {
+    background: var(--blue-pale);
+    color: var(--blue-primary);
+}
+
+.search-input {
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 14px;
+    color: var(--gray-800);
+    padding: 4px 8px;
+    min-width: 200px;
+    font-family: inherit;
+}
+
+.search-input::placeholder {
+    color: var(--gray-400);
+}
+
+.ai-agent-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 6px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    color: var(--gray-600);
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    border-radius: 6px;
+    border-left: 1px solid var(--border-color);
+    padding-left: 12px;
+    margin-left: 4px;
+    flex-shrink: 0;
+}
+
+.ai-agent-btn:hover {
+    background: var(--blue-pale);
+    color: var(--blue-primary);
+}
+
+.ai-agent-btn svg {
+    flex-shrink: 0;
+}
+
 .tabs {
     display: flex;
     gap: 12px;
@@ -120,6 +206,9 @@ body {
     color: var(--gray-600);
     transition: all 0.2s ease;
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .tab:hover {
@@ -1415,16 +1504,6 @@ body {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-}
-
-/* 최근 조업 내용 (좁은 카드 - 20%) */
-.recent-box-narrow {
-    /* 기존 .recent-box 스타일 유지 */
-}
-
-/* ML 파이프라인 & Augmentation (넓은 카드 - 40%) */
-.recent-box-wide {
-    /* 기존 .recent-box 스타일 유지 */
 }
 
 /* ML 파이프라인 스타일 */

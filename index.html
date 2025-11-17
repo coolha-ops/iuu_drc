@@ -10,13 +10,31 @@
     <!-- 헤더 -->
     <header class="header">
         <h1 class="title">원양어선 EM 모니터링</h1>
-        <nav class="tabs">
-            <button class="tab">옵서버 Review</button>
-            <button class="tab">데이터 분석</button>
-            <button class="tab">조업 결과</button>
-            <button class="tab">장비 상태</button>
-            <button class="tab">선박 모니터링</button>
-        </nav>
+        <div class="header-center">
+            <div class="search-area">
+                <button class="search-icon-btn" title="검색">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                </button>
+                <input type="text" class="search-input" placeholder="검색..." />
+                <button class="ai-agent-btn" title="AI 에이전트">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.49 8.49l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.49-8.49l2.83-2.83"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                    <span>AI</span>
+                </button>
+            </div>
+            <nav class="tabs">
+                <button class="tab">옵서버 Review</button>
+                <button class="tab">데이터 분석</button>
+                <button class="tab">조업 결과</button>
+                <button class="tab">장비 상태</button>
+                <button class="tab">선박 모니터링</button>
+            </nav>
+        </div>
         <button class="settings-btn" title="환경 설정">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="12" cy="12" r="3"></circle>
