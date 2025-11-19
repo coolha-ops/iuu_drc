@@ -1,0 +1,1172 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+.header {
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    background-color: #fff;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.header-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+}
+
+.search-bar {
+    flex: 1;
+    max-width: 400px;
+    margin: 0 20px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-color: #f5f5f5;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 0 8px;
+    transition: all 0.2s;
+}
+
+.search-bar:focus-within {
+    background-color: #fff;
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+.search-icon {
+    color: #666;
+    margin-right: 8px;
+    flex-shrink: 0;
+}
+
+.search-bar input {
+    flex: 1;
+    height: 36px;
+    padding: 0 8px;
+    border: none;
+    background: transparent;
+    font-size: 14px;
+    outline: none;
+}
+
+.search-bar input::placeholder {
+    color: #999;
+}
+
+.ai-button {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    flex-shrink: 0;
+    margin-left: 4px;
+}
+
+.ai-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.ai-button:active {
+    transform: translateY(0);
+}
+
+.ai-button svg {
+    flex-shrink: 0;
+}
+
+.button-wrapper {
+    display: flex;
+    gap: 8px;
+}
+
+.button-wrapper button {
+    padding: 8px 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.button-wrapper button:hover {
+    background-color: #f5f5f5;
+    border-color: #007bff;
+}
+
+.dashboard {
+    width: 100%;
+    min-height: calc(100vh - 60px);
+    padding: 16px;
+    background-color: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* 상단 통계 섹션 */
+.stats-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 16px;
+    height: 200px;
+    flex-shrink: 0;
+    padding-bottom: 16px;
+    margin-bottom: 4px;
+}
+
+.dashboard-section {
+    background-color: #fff;
+    border-radius: 8px;
+    min-height: 200px;
+    padding: 8px 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.section-merged-1 {
+    grid-column: 1 / 2.5;
+}
+
+.section-merged-2 {
+    grid-column: 2.5 / 4;
+}
+
+/* IUU 통계 카드 스타일 */
+.card-iuu {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #333;
+}
+
+.card-content {
+    flex: 1;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.pie-chart-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+#iuuPieChart {
+    width: 90px !important;
+    height: 90px !important;
+}
+
+.pie-legend {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    justify-content: center;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.legend-color {
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+    display: inline-block;
+}
+
+.legend-label {
+    font-size: 12px;
+    color: #666;
+}
+
+.stats-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+    margin-left: auto;
+    padding-right: 8px;
+}
+
+.today-stats {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+}
+
+.today-label {
+    font-size: 20px;
+    color: #333;
+    font-weight: 500;
+}
+
+.today-number {
+    font-size: 42px;
+    font-weight: 700;
+    color: #007bff;
+    line-height: 1;
+}
+
+.today-unit {
+    font-size: 20px;
+    color: #333;
+    font-weight: 500;
+}
+
+.month-stats {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+}
+
+.month-label {
+    font-size: 20px;
+    color: #333;
+    font-weight: 500;
+}
+
+.month-number {
+    font-size: 42px;
+    font-weight: 700;
+    color: #007bff;
+    line-height: 1;
+}
+
+.month-unit {
+    font-size: 20px;
+    color: #333;
+    font-weight: 500;
+}
+
+.total-stats {
+    font-size: 18px;
+    color: #999;
+}
+
+/* 옵서버 리뷰 현황 카드 스타일 */
+.card-observer {
+    padding: 8px 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.observer-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.observer-stats {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.observer-label {
+    font-size: 24px;
+    color: #333;
+    font-weight: 500;
+}
+
+.observer-number {
+    font-size: 56px;
+    font-weight: 700;
+    color: #007bff;
+    line-height: 1;
+}
+
+.observer-unit {
+    font-size: 24px;
+    color: #333;
+    font-weight: 500;
+}
+
+.observer-divider {
+    font-size: 24px;
+    color: #333;
+    font-weight: 500;
+    margin: 0 4px;
+}
+
+.observer-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: #999;
+    padding-top: 8px;
+    text-align: center;
+    gap: 4px;
+}
+
+.observer-meta-label {
+    font-weight: 600;
+    color: #444;
+}
+
+.observer-meta-value {
+    font-size: 12px;
+    color: #666;
+}
+
+/* 장비 가동률 카드 스타일 */
+.card-equipment {
+    padding: 8px 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.equipment-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 8px;
+    margin-top: 4px;
+}
+
+.equipment-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+}
+
+.equipment-chart-wrapper {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    flex-shrink: 0;
+}
+
+.equipment-item canvas {
+    width: 60px !important;
+    height: 60px !important;
+}
+
+.equipment-percent {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+}
+
+.equipment-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+}
+
+.equipment-label {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+}
+
+.equipment-error {
+    font-size: 14px;
+    color: #dc3545;
+    border-bottom: 1px solid #dc3545;
+    padding-bottom: 2px;
+    width: fit-content;
+}
+
+/* 어획량 카드 스타일 */
+.card-catch {
+    padding: 8px 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.catch-stats {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+    padding-right: 8px;
+}
+
+.catch-stat-item {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+}
+
+.catch-label {
+    font-size: 16px;
+    color: #333;
+    font-weight: 500;
+}
+
+.catch-number {
+    font-size: 32px;
+    font-weight: 700;
+    color: #007bff;
+    line-height: 1;
+}
+
+.catch-unit {
+    font-size: 16px;
+    color: #333;
+    font-weight: 500;
+}
+
+#catchPieChart {
+    width: 90px !important;
+    height: 90px !important;
+}
+
+/* 데이터/AI 섹션 및 활동 선박 섹션 */
+.data-vessel-section {
+    display: grid;
+    grid-template-columns: 75% 25%;
+    gap: 0;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+}
+
+/* AI 영역 */
+.ai-section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    min-height: 0;
+    overflow: hidden;
+    height: 100%;
+    padding-right: 16px;
+    margin-right: 4px;
+}
+
+/* 상단 3개 카드 그리드: 3열 균등 배치 */
+.ai-grid-top {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    flex: 6;
+    min-height: 0;
+}
+
+/* 하단 2개 카드 그리드: 2열 균등 배치 */
+.ai-grid-bottom {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    flex: 4;
+    min-height: 0;
+}
+
+/* AI 카드 크기 조정 */
+.ai-card-top,
+.ai-card-regular {
+    min-height: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.ai-card-large {
+    grid-column: span 1;
+    grid-row: span 1;
+    min-height: 0;
+    height: 100%;
+}
+
+/* chart-box 스타일은 dashboard-section으로 통일 */
+.chart-box {
+    /* dashboard-section 스타일 사용 */
+}
+
+/* 데이터 수집 현황 카드 스타일 */
+.collection-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 8px;
+}
+
+.collection-chart {
+    flex: 1.2;
+    min-height: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.collection-line-chart {
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+}
+
+.collection-stats {
+    display: flex;
+    justify-content: space-around;
+    gap: 8px;
+    padding-top: 6px;
+    border-top: 1px solid #e2e8f0;
+    flex-shrink: 0;
+}
+
+.collection-stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.collection-label {
+    font-size: 11px;
+    color: #64748b;
+    font-weight: 500;
+}
+
+.collection-value {
+    font-size: 16px;
+    color: #1e293b;
+    font-weight: 700;
+}
+
+/* 모델 학습 성능 카드 스타일 */
+.performance-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 8px;
+}
+
+.performance-chart {
+    flex: 1.2;
+    min-height: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.performance-line-chart {
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+}
+
+.performance-stats {
+    display: flex;
+    justify-content: space-around;
+    gap: 8px;
+    padding-top: 6px;
+    border-top: 1px solid #e2e8f0;
+    flex-shrink: 0;
+}
+
+.performance-stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.performance-label {
+    font-size: 11px;
+    color: #64748b;
+    font-weight: 500;
+}
+
+.performance-value {
+    font-size: 16px;
+    color: #1e293b;
+    font-weight: 700;
+}
+
+/* 데이터 품질 분포 카드 스타일 */
+.quality-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 8px;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.quality-chart {
+    flex: 0.4;
+    min-height: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    flex-shrink: 0;
+}
+
+.quality-distribution {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    padding-top: 6px;
+    border-top: 1px solid #e2e8f0;
+    flex: 1;
+    min-height: 0;
+}
+
+.quality-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    padding: 4px 0;
+}
+
+.quality-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.quality-normal {
+    background-color: #10b981;
+}
+
+.quality-warning {
+    background-color: #f59e0b;
+}
+
+.quality-error {
+    background-color: #ef4444;
+}
+
+.quality-label {
+    flex: 1;
+    color: #334155;
+    font-weight: 600;
+    font-size: 12px;
+}
+
+.quality-count {
+    color: #475569;
+    font-weight: 700;
+    font-size: 12px;
+}
+
+.quality-percent {
+    color: #475569;
+    font-weight: 700;
+    font-size: 12px;
+    min-width: 50px;
+    text-align: right;
+}
+
+.chart-circle {
+    position: relative;
+    width: auto;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    min-width: 0;
+    min-height: 0;
+    margin: 0 auto;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.circle-progress {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg, #f59e0b 0% var(--progress), #e2e8f0 var(--progress) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.circle-progress::before {
+    content: '';
+    position: absolute;
+    width: 70%;
+    height: 70%;
+    background: #ffffff;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.circle-value {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 800;
+    font-size: 14px;
+    color: #f59e0b;
+    z-index: 1;
+}
+
+/* 파이프라인 단계 개선 스타일 */
+.pipeline-enhanced-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.pipeline-steps-enhanced {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    height: 100%;
+    overflow: hidden;
+    align-items: stretch;
+}
+
+.pipeline-step-enhanced {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 8px;
+    background: #f8fafc;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    flex: 1;
+    min-width: 0;
+}
+
+.step-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.step-icon {
+    font-size: 16px;
+}
+
+.step-label {
+    font-size: 11px;
+    color: #334155;
+    font-weight: 600;
+    flex: 1;
+}
+
+.step-progress-bar {
+    width: 100%;
+    height: 6px;
+    background: #e2e8f0;
+    border-radius: 3px;
+    overflow: hidden;
+    position: relative;
+}
+
+.step-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #10b981, #34d399);
+    border-radius: 3px;
+    transition: width 0.3s ease;
+}
+
+.step-progress-text {
+    font-size: 10px;
+    color: #475569;
+    font-weight: 600;
+    text-align: right;
+}
+
+/* 모델 관리 카드 스타일 - dashboard-section으로 통일 */
+.detail-box {
+    /* dashboard-section 스타일 사용 */
+}
+
+.model-management-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 12px;
+}
+
+.model-version-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 2px solid #e3f2fd;
+}
+
+.current-model-label {
+    font-size: 11px;
+    color: #334155;
+    font-weight: 600;
+}
+
+.current-model-value {
+    font-size: 13px;
+    color: #2563eb;
+    font-weight: 800;
+}
+
+.model-comparison {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 4px 0;
+    width: 100%;
+}
+
+.model-version {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+}
+
+.version-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #334155;
+    min-width: 40px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.version-bar {
+    flex: 1;
+    height: 18px;
+    background: #e2e8f0;
+    border-radius: 8px;
+    overflow: hidden;
+    min-width: 0;
+}
+
+.version-fill {
+    height: 100%;
+    background: linear-gradient(to right, #8b5cf6, #a78bfa);
+    border-radius: 8px;
+    transition: width 0.5s ease;
+}
+
+.version-score {
+    font-size: 11px;
+    font-weight: 700;
+    color: #8b5cf6;
+    min-width: 40px;
+    text-align: right;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+/* 오른쪽 영역 (선박 모니터링 + 최근 조업 내용) */
+.vessel-recent-section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    min-height: 0;
+    overflow: hidden;
+    padding-left: 16px;
+}
+
+.vessel-recent-section .vessel-section {
+    flex: 1.0;
+    min-height: 0;
+    padding: 0;
+}
+
+.vessel-recent-section .vessel-section .map-container {
+    height: 100%;
+    width: 100%;
+    flex: 1;
+    min-height: 0;
+}
+
+.vessel-section {
+    gap: 16px;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.map-container {
+    position: relative;
+    overflow: hidden;
+    min-height: 0;
+    flex: 0 0 60%;
+    display: flex;
+    flex-direction: column;
+}
+
+.map-placeholder {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: linear-gradient(135deg, #e0f2fe 0%, #dbeafe 100%);
+    border-radius: 8px;
+    flex: 1;
+    min-height: 0;
+    border: 1.5px solid rgba(74, 144, 226, 0.15);
+}
+
+/* 활동 선박 오버레이 (지도 왼쪽 세로) */
+.vessel-list-overlay {
+    position: absolute;
+    left: 12px;
+    top: 12px;
+    bottom: 12px;
+    width: 180px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 8px;
+    padding: 12px;
+    box-shadow: 0 4px 6px rgba(74, 144, 226, 0.1);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    overflow-y: auto;
+}
+
+.vessel-list-overlay h4 {
+    font-size: 13px;
+    font-weight: 700;
+    color: #2563eb;
+    margin-bottom: 4px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid #e3f2fd;
+}
+
+.vessel-label-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+    min-height: 0;
+}
+
+.vessel-label-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 8px;
+    border-radius: 6px;
+    background: #f8fafc;
+    transition: all 0.2s ease;
+}
+
+.vessel-label-item:hover {
+    background: #e3f2fd;
+    transform: translateX(2px);
+}
+
+.vessel-label-color {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.vessel-label-name {
+    font-size: 12px;
+    font-weight: 500;
+    color: #334155;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.vessel-stat-overlay {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: #ffffff;
+    border: 1.5px solid rgba(74, 144, 226, 0.15);
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 10px 15px rgba(74, 144, 226, 0.1);
+    z-index: 5;
+    min-width: 120px;
+    max-width: 140px;
+    overflow: hidden;
+}
+
+.vessel-stat-overlay h3 {
+    font-size: 12px;
+    font-weight: 700;
+    color: #2563eb;
+    margin-bottom: 8px;
+    padding-bottom: 4px;
+    border-bottom: 2px solid #e3f2fd;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.3;
+}
+
+.vessel-stat-items {
+    display: grid;
+    gap: 10px;
+}
+
+.vessel-stat-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 2px 0;
+    min-width: 0;
+}
+
+.vessel-stat-label {
+    font-size: 11px;
+    color: #334155;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.4;
+    max-width: 60%;
+    font-weight: 600;
+}
+
+.vessel-stat-value {
+    font-size: 13px;
+    font-weight: 700;
+    color: #1e293b;
+    white-space: nowrap;
+    line-height: 1.4;
+    flex-shrink: 0;
+}
+
+.map-controls {
+    position: absolute;
+    right: 12px;
+    top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    z-index: 10;
+}
+
+.map-btn {
+    width: 36px;
+    height: 36px;
+    background: #ffffff;
+    border: 1.5px solid rgba(74, 144, 226, 0.15);
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 600;
+    color: #4a90e2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(74, 144, 226, 0.1);
+    transition: all 0.2s ease;
+}
+
+.map-btn:hover {
+    background: #e3f2fd;
+    transform: scale(1.1);
+    box-shadow: 0 10px 15px rgba(74, 144, 226, 0.1);
+}
+
+.compass {
+    width: 36px;
+    height: 36px;
+    background: #ffffff;
+    border: 1.5px solid rgba(74, 144, 226, 0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+    color: #4a90e2;
+    box-shadow: 0 4px 6px rgba(74, 144, 226, 0.1);
+}
+
+.map-dots {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.map-dot {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 3px solid #ffffff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.map-dot:hover {
+    transform: scale(1.3);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+}
+
+/* 최근 조업 내용 박스 */
+.recent-box {
+    flex: 0 0 auto;
+    height: calc((100% - 32px) / 3);
+    min-height: 0;
+    overflow: hidden;
+}
+
+.recent-content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 0;
+    max-height: 100%;
+    overflow: hidden;
+}
+
+.empty-placeholder {
+    font-size: 12px;
+    color: #94a3b8;
+    font-style: italic;
+    line-height: 1.4;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
