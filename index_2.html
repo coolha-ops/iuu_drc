@@ -184,58 +184,85 @@
                     <div class="dashboard-section ai-card-large ai-card-top">
                         <h2 class="card-title">데이터 수집 현황</h2>
                         <div class="collection-content">
-                            <div class="collection-chart">
-                                <svg viewBox="0 0 400 200" class="collection-line-chart">
-                                    <!-- X축 -->
-                                    <line x1="40" y1="160" x2="360" y2="160" stroke="#cbd5e1" stroke-width="1"/>
-                                    <!-- Y축 -->
-                                    <line x1="40" y1="20" x2="40" y2="160" stroke="#cbd5e1" stroke-width="1"/>
-                                    <!-- 수집됨 라인 (실선, 파란색) -->
-                                    <polyline points="40,140 80,120 120,110 160,100 200,90 240,85 280,80 320,75" 
-                                             fill="none" stroke="#14b8a6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <circle cx="40" cy="140" r="4" fill="#14b8a6"/>
-                                    <circle cx="80" cy="120" r="4" fill="#14b8a6"/>
-                                    <circle cx="120" cy="110" r="4" fill="#14b8a6"/>
-                                    <circle cx="160" cy="100" r="4" fill="#14b8a6"/>
-                                    <circle cx="200" cy="90" r="4" fill="#14b8a6"/>
-                                    <circle cx="240" cy="85" r="4" fill="#14b8a6"/>
-                                    <circle cx="280" cy="80" r="4" fill="#14b8a6"/>
-                                    <circle cx="320" cy="75" r="4" fill="#14b8a6"/>
-                                    <!-- 목표 라인 (점선, 주황색) -->
-                                    <polyline points="40,130 80,110 120,100 160,90 200,80 240,75 280,70 320,65" 
-                                             fill="none" stroke="#f59e0b" stroke-width="2" stroke-dasharray="5,5" stroke-linecap="round"/>
-                                    <polygon points="40,130 45,125 50,130 45,135" fill="#f59e0b"/>
-                                    <polygon points="80,110 85,105 90,110 85,115" fill="#f59e0b"/>
-                                    <polygon points="120,100 125,95 130,100 125,105" fill="#f59e0b"/>
-                                    <polygon points="160,90 165,85 170,90 165,95" fill="#f59e0b"/>
-                                    <polygon points="200,80 205,75 210,80 205,85" fill="#f59e0b"/>
-                                    <polygon points="240,75 245,70 250,75 245,80" fill="#f59e0b"/>
-                                    <polygon points="280,70 285,65 290,70 285,75" fill="#f59e0b"/>
-                                    <polygon points="320,65 325,60 330,65 325,70" fill="#f59e0b"/>
-                                    <!-- 범례 -->
-                                    <g transform="translate(250, 30)">
-                                        <line x1="0" y1="0" x2="30" y2="0" stroke="#14b8a6" stroke-width="2.5"/>
-                                        <circle cx="15" cy="0" r="3" fill="#14b8a6"/>
-                                        <text x="35" y="4" font-size="12" fill="#334155">수집됨</text>
-                                        <line x1="100" y1="0" x2="130" y2="0" stroke="#f59e0b" stroke-width="2" stroke-dasharray="5,5"/>
-                                        <polygon points="115,0 120,-5 125,0 120,5" fill="#f59e0b"/>
-                                        <text x="135" y="4" font-size="12" fill="#334155">목표</text>
-                                    </g>
-                                </svg>
+                            <!-- 텍스트 영역: 목표/달성/달성률 가로 배치 -->
+                            <div class="collection-header">
+                                <div class="collection-stats-row">
+                                    <div class="collection-stat-group">
+                                        <span class="collection-stat-value">4.5TB</span>
+                                        <span class="collection-stat-divider">/</span>
+                                        <span class="collection-stat-value">5TB</span>
+                                        <span class="collection-stat-label collection-stat-label-goal">목표</span>
+                                    </div>
+                                    <span class="collection-stat-divider-main">|</span>
+                                    <div class="collection-stat-group">
+                                        <span class="collection-stat-value">90%</span>
+                                        <span class="collection-stat-label">달성</span>
+                                    </div>
+                                </div>
+                                <div class="collection-upload-row">
+                                    <span class="collection-upload-count">업로드 영상 수: 2,430</span>
+                                </div>
                             </div>
-                            <div class="collection-stats">
-                                <div class="collection-stat-item">
-                                    <span class="collection-label">총 수집량</span>
-                                    <span class="collection-value">9,100</span>
-                                </div>
-                                <div class="collection-stat-item">
-                                    <span class="collection-label">목표량</span>
-                                    <span class="collection-value">10,000</span>
-                                </div>
-                                <div class="collection-stat-item">
-                                    <span class="collection-label">달성률</span>
-                                    <span class="collection-value">91%</span>
-                                </div>
+                            <!-- 그래프 영역 -->
+                            <div class="collection-chart">
+                                <svg viewBox="0 0 700 380" class="collection-bar-chart" preserveAspectRatio="xMidYMid meet">
+                                    <!-- Y축 -->
+                                    <line x1="70" y1="60" x2="70" y2="300" stroke="#cbd5e1" stroke-width="1.5"/>
+                                    <!-- X축 -->
+                                    <line x1="70" y1="300" x2="650" y2="300" stroke="#cbd5e1" stroke-width="1.5"/>
+                                    
+                                    <!-- Y축 눈금 및 라벨 (0 ~ 1.5TB, 0.5TB 단위) -->
+                                    <g class="y-axis-labels">
+                                        <line x1="70" y1="300" x2="650" y2="300" stroke="#e2e8f0" stroke-width="0.5"/>
+                                        <text x="65" y="305" font-size="18" fill="#64748b" text-anchor="end">0</text>
+                                        <line x1="70" y1="220" x2="650" y2="220" stroke="#e2e8f0" stroke-width="0.5"/>
+                                        <text x="65" y="225" font-size="18" fill="#64748b" text-anchor="end">0.5TB</text>
+                                        <line x1="70" y1="140" x2="650" y2="140" stroke="#e2e8f0" stroke-width="0.5"/>
+                                        <text x="65" y="145" font-size="18" fill="#64748b" text-anchor="end">1.0TB</text>
+                                        <line x1="70" y1="60" x2="650" y2="60" stroke="#e2e8f0" stroke-width="0.5"/>
+                                        <text x="65" y="65" font-size="18" fill="#64748b" text-anchor="end">1.5TB</text>
+                                    </g>
+                                    
+                                    <!-- 데이터: 1주차 -->
+                                    <!-- 막대: 수집량 1.1TB (y=126.67, height=173.33) -->
+                                    <rect x="120" y="126.67" width="100" height="173.33" fill="#f59e0b" rx="4"/>
+                                    <text x="170" y="220" font-size="26" font-weight="700" fill="#fff" text-anchor="middle">1.1TB</text>
+                                    <!-- 목표선: 1.25TB (검정, y=100) -->
+                                    <line x1="120" y1="100" x2="220" y2="100" stroke="#000" stroke-width="3"/>
+                                    <text x="170" y="90" font-size="24" font-weight="600" fill="#000" text-anchor="middle">1.25TB</text>
+                                    <!-- X축 라벨 -->
+                                    <text x="170" y="330" font-size="20" font-weight="600" fill="#334155" text-anchor="middle">10월 1주차</text>
+                                    
+                                    <!-- 데이터: 2주차 -->
+                                    <!-- 막대: 수집량 1.2TB (y=100, height=200) -->
+                                    <rect x="250" y="100" width="100" height="200" fill="#10b981" rx="4"/>
+                                    <text x="300" y="205" font-size="26" font-weight="700" fill="#fff" text-anchor="middle">1.2TB</text>
+                                    <!-- 목표선: 1.15TB (검정, y=113.33) -->
+                                    <line x1="250" y1="113.33" x2="350" y2="113.33" stroke="#000" stroke-width="3"/>
+                                    <text x="300" y="103" font-size="24" font-weight="600" fill="#000" text-anchor="middle">1.15TB</text>
+                                    <!-- X축 라벨 -->
+                                    <text x="300" y="330" font-size="20" font-weight="600" fill="#334155" text-anchor="middle">10월 2주차</text>
+                                    
+                                    <!-- 데이터: 3주차 -->
+                                    <!-- 막대: 수집량 1.05TB (y=140, height=160) -->
+                                    <rect x="380" y="140" width="100" height="160" fill="#f59e0b" rx="4"/>
+                                    <text x="430" y="225" font-size="26" font-weight="700" fill="#fff" text-anchor="middle">1.05TB</text>
+                                    <!-- 목표선: 1.2TB (검정, y=100) -->
+                                    <line x1="380" y1="100" x2="480" y2="100" stroke="#000" stroke-width="3"/>
+                                    <text x="430" y="90" font-size="24" font-weight="600" fill="#000" text-anchor="middle">1.2TB</text>
+                                    <!-- X축 라벨 -->
+                                    <text x="430" y="330" font-size="20" font-weight="600" fill="#334155" text-anchor="middle">10월 3주차</text>
+                                    
+                                    <!-- 데이터: 4주차 -->
+                                    <!-- 막대: 수집량 1.15TB (y=113.33, height=186.67) -->
+                                    <rect x="510" y="113.33" width="100" height="186.67" fill="#f59e0b" rx="4"/>
+                                    <text x="560" y="210" font-size="26" font-weight="700" fill="#fff" text-anchor="middle">1.15TB</text>
+                                    <!-- 목표선: 1.4TB (검정, y=73.33) -->
+                                    <line x1="510" y1="73.33" x2="610" y2="73.33" stroke="#000" stroke-width="3"/>
+                                    <text x="560" y="63" font-size="24" font-weight="600" fill="#000" text-anchor="middle">1.4TB</text>
+                                    <!-- X축 라벨 -->
+                                    <text x="560" y="330" font-size="20" font-weight="600" fill="#334155" text-anchor="middle">10월 4주차</text>
+                                </svg>
                             </div>
                         </div>
                     </div>
@@ -244,90 +271,148 @@
                     <div class="dashboard-section ai-card-large ai-card-top">
                         <h2 class="card-title">모델 학습 성능</h2>
                         <div class="performance-content">
-                            <div class="performance-chart">
-                                <svg viewBox="0 0 400 200" class="performance-line-chart">
-                                    <!-- X축 (Epoch) -->
-                                    <line x1="40" y1="160" x2="360" y2="160" stroke="#cbd5e1" stroke-width="1"/>
-                                    <!-- Y축 (정확도/손실) -->
-                                    <line x1="40" y1="20" x2="40" y2="160" stroke="#cbd5e1" stroke-width="1"/>
-                                    <!-- 정확도 라인 (녹색, 상승) -->
-                                    <polyline points="40,100 80,90 120,80 160,70 200,60 240,55 280,50 320,45" 
-                                             fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <circle cx="40" cy="100" r="4" fill="#10b981"/>
-                                    <circle cx="80" cy="90" r="4" fill="#10b981"/>
-                                    <circle cx="120" cy="80" r="4" fill="#10b981"/>
-                                    <circle cx="160" cy="70" r="4" fill="#10b981"/>
-                                    <circle cx="200" cy="60" r="4" fill="#10b981"/>
-                                    <circle cx="240" cy="55" r="4" fill="#10b981"/>
-                                    <circle cx="280" cy="50" r="4" fill="#10b981"/>
-                                    <circle cx="320" cy="45" r="4" fill="#10b981"/>
-                                    <!-- 손실 라인 (빨간색, 하락) -->
-                                    <polyline points="40,60 80,70 120,80 160,90 200,100 240,105 280,110 320,115" 
-                                             fill="none" stroke="#ef4444" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <circle cx="40" cy="60" r="4" fill="#ef4444"/>
-                                    <circle cx="80" cy="70" r="4" fill="#ef4444"/>
-                                    <circle cx="120" cy="80" r="4" fill="#ef4444"/>
-                                    <circle cx="160" cy="90" r="4" fill="#ef4444"/>
-                                    <circle cx="200" cy="100" r="4" fill="#ef4444"/>
-                                    <circle cx="240" cy="105" r="4" fill="#ef4444"/>
-                                    <circle cx="280" cy="110" r="4" fill="#ef4444"/>
-                                    <circle cx="320" cy="115" r="4" fill="#ef4444"/>
-                                    <!-- 범례 -->
-                                    <g transform="translate(250, 30)">
-                                        <line x1="0" y1="0" x2="30" y2="0" stroke="#10b981" stroke-width="2.5"/>
-                                        <circle cx="15" cy="0" r="3" fill="#10b981"/>
-                                        <text x="35" y="4" font-size="12" fill="#334155">정확도</text>
-                                        <line x1="100" y1="0" x2="130" y2="0" stroke="#ef4444" stroke-width="2.5"/>
-                                        <circle cx="115" cy="0" r="3" fill="#ef4444"/>
-                                        <text x="135" y="4" font-size="12" fill="#334155">손실</text>
-                                    </g>
-                                </svg>
+                            <!-- 텍스트 영역: 정확도/F1-Score/mAP/최종 손실 가로 배치 -->
+                            <div class="performance-header">
+                                <div class="performance-stats-row">
+                                    <div class="performance-stat-item">
+                                        <span class="performance-stat-label">정확도</span>
+                                        <span class="performance-stat-value">92.1%</span>
+                                    </div>
+                                    <span class="performance-stat-divider">|</span>
+                                    <div class="performance-stat-item">
+                                        <span class="performance-stat-label">F1-Score</span>
+                                        <span class="performance-stat-value">0.895</span>
+                                    </div>
+                                    <span class="performance-stat-divider">|</span>
+                                    <div class="performance-stat-item">
+                                        <span class="performance-stat-label">mAP</span>
+                                        <span class="performance-stat-value">0.87</span>
+                                    </div>
+                                    <span class="performance-stat-divider">|</span>
+                                    <div class="performance-stat-item">
+                                        <span class="performance-stat-label">최종 손실</span>
+                                        <span class="performance-stat-value">0.15</span>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="performance-stats">
-                                <div class="performance-stat-item">
-                                    <span class="performance-label">최종 정확도</span>
-                                    <span class="performance-value">0.921</span>
-                                </div>
-                                <div class="performance-stat-item">
-                                    <span class="performance-label">F1-Score</span>
-                                    <span class="performance-value">0.895</span>
-                                </div>
-                                <div class="performance-stat-item">
-                                    <span class="performance-label">최종 손실</span>
-                                    <span class="performance-value">0.15</span>
-                                </div>
+                            <!-- 그래프 영역: Validation 정확도 -->
+                            <div class="performance-chart">
+                                <svg viewBox="0 0 700 380" class="performance-line-chart" preserveAspectRatio="xMidYMid meet">
+                                    <!-- Y축 -->
+                                    <line x1="60" y1="60" x2="60" y2="300" stroke="#cbd5e1" stroke-width="1.5"/>
+                                    <!-- X축 -->
+                                    <line x1="60" y1="300" x2="650" y2="300" stroke="#cbd5e1" stroke-width="1.5"/>
+                                    
+                                    <!-- Y축 라벨: Validation (세로) -->
+                                    <text x="20" y="180" font-size="18" font-weight="600" fill="#334155" text-anchor="middle" transform="rotate(-90 20 180)">Validation</text>
+                                    
+                                    <!-- Y축 눈금 및 라벨 (0 ~ 100%, 20% 단위) -->
+                                    <g class="y-axis-labels">
+                                        <line x1="60" y1="300" x2="650" y2="300" stroke="#e2e8f0" stroke-width="0.5"/>
+                                        <text x="50" y="305" font-size="18" fill="#64748b" text-anchor="end">0%</text>
+                                        <line x1="60" y1="240" x2="650" y2="240" stroke="#e2e8f0" stroke-width="0.5"/>
+                                        <text x="50" y="245" font-size="18" fill="#64748b" text-anchor="end">20%</text>
+                                        <line x1="60" y1="180" x2="650" y2="180" stroke="#e2e8f0" stroke-width="0.5"/>
+                                        <text x="50" y="185" font-size="18" fill="#64748b" text-anchor="end">40%</text>
+                                        <line x1="60" y1="120" x2="650" y2="120" stroke="#e2e8f0" stroke-width="0.5"/>
+                                        <text x="50" y="125" font-size="18" fill="#64748b" text-anchor="end">60%</text>
+                                        <line x1="60" y1="60" x2="650" y2="60" stroke="#e2e8f0" stroke-width="0.5"/>
+                                        <text x="50" y="65" font-size="18" fill="#64748b" text-anchor="end">80%</text>
+                                    </g>
+                                    
+                                    <!-- Validation 정확도 라인 (초록색, 상승) -->
+                                    <!-- Epoch 1: 65%, Epoch 2: 72%, Epoch 3: 78%, Epoch 4: 83%, Epoch 5: 87%, Epoch 6: 90%, Epoch 7: 91%, Epoch 8: 92% -->
+                                    <!-- X축 범위: 60~650 (590px), 8개 포인트, 균등 간격: 590/7 = 84.29px -->
+                                    <polyline points="60,210 144.29,168 228.58,132 312.87,102 397.16,78 481.45,60 565.74,54 650,48" 
+                                             fill="none" stroke="#10b981" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <circle cx="60" cy="210" r="6" fill="#10b981"/>
+                                    <text x="60" y="195" font-size="20" font-weight="600" fill="#10b981" text-anchor="middle">65%</text>
+                                    <circle cx="144.29" cy="168" r="6" fill="#10b981"/>
+                                    <text x="144.29" y="153" font-size="20" font-weight="600" fill="#10b981" text-anchor="middle">72%</text>
+                                    <circle cx="228.58" cy="132" r="6" fill="#10b981"/>
+                                    <text x="228.58" y="117" font-size="20" font-weight="600" fill="#10b981" text-anchor="middle">78%</text>
+                                    <circle cx="312.87" cy="102" r="6" fill="#10b981"/>
+                                    <text x="312.87" y="87" font-size="20" font-weight="600" fill="#10b981" text-anchor="middle">83%</text>
+                                    <circle cx="397.16" cy="78" r="6" fill="#10b981"/>
+                                    <text x="397.16" y="63" font-size="20" font-weight="600" fill="#10b981" text-anchor="middle">87%</text>
+                                    <circle cx="481.45" cy="60" r="6" fill="#10b981"/>
+                                    <text x="481.45" y="45" font-size="20" font-weight="600" fill="#10b981" text-anchor="middle">90%</text>
+                                    <circle cx="565.74" cy="54" r="6" fill="#10b981"/>
+                                    <text x="565.74" y="39" font-size="20" font-weight="600" fill="#10b981" text-anchor="middle">91%</text>
+                                    <circle cx="650" cy="48" r="6" fill="#10b981"/>
+                                    <text x="650" y="33" font-size="20" font-weight="600" fill="#10b981" text-anchor="middle">92%</text>
+                                    
+                                    <!-- X축 라벨: 숫자만 -->
+                                    <text x="60" y="330" font-size="20" font-weight="600" fill="#334155" text-anchor="middle">1</text>
+                                    <text x="144.29" y="330" font-size="20" font-weight="600" fill="#334155" text-anchor="middle">2</text>
+                                    <text x="228.58" y="330" font-size="20" font-weight="600" fill="#334155" text-anchor="middle">3</text>
+                                    <text x="312.87" y="330" font-size="20" font-weight="600" fill="#334155" text-anchor="middle">4</text>
+                                    <text x="397.16" y="330" font-size="20" font-weight="600" fill="#334155" text-anchor="middle">5</text>
+                                    <text x="481.45" y="330" font-size="20" font-weight="600" fill="#334155" text-anchor="middle">6</text>
+                                    <text x="565.74" y="330" font-size="20" font-weight="600" fill="#334155" text-anchor="middle">7</text>
+                                    <text x="650" y="330" font-size="20" font-weight="600" fill="#334155" text-anchor="middle">8</text>
+                                    
+                                    <!-- X축 라벨: Epoch (중앙 아래) -->
+                                    <text x="355" y="360" font-size="20" font-weight="600" fill="#334155" text-anchor="middle">Epoch</text>
+                                </svg>
                             </div>
                         </div>
                     </div>
 
-                    <!-- 3. 데이터 품질 분포 -->
+                    <!-- 3. 품질 관리 요약 -->
                     <div class="dashboard-section ai-card-large ai-card-top">
-                        <h2 class="card-title">데이터 품질 분포</h2>
-                        <div class="quality-content">
-                            <div class="quality-chart">
-                                <div class="chart-circle">
-                                    <div class="circle-progress" style="--progress: 93.9%"></div>
-                                    <span class="circle-value">93.9%</span>
+                        <h2 class="card-title">품질 관리 요약</h2>
+                        <div class="quality-summary-content">
+                            <!-- 상단 20%: 오탐/미탐 의심 건수 -->
+                            <div class="quality-summary-header">
+                                <div class="quality-summary-stats-row">
+                                    <div class="quality-summary-stat-item">
+                                        <span class="quality-summary-stat-label">오탐 의심</span>
+                                        <span class="quality-summary-stat-value">74건</span>
+                                    </div>
+                                    <span class="quality-summary-stat-divider">/</span>
+                                    <div class="quality-summary-stat-item">
+                                        <span class="quality-summary-stat-label">미탐 의심</span>
+                                        <span class="quality-summary-stat-value">28건</span>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="quality-distribution">
-                                <div class="quality-item">
-                                    <span class="quality-dot quality-normal"></span>
-                                    <span class="quality-label">정상</span>
-                                    <span class="quality-count">8,542</span>
-                                    <span class="quality-percent">93.9%</span>
-                                </div>
-                                <div class="quality-item">
-                                    <span class="quality-dot quality-warning"></span>
-                                    <span class="quality-label">경고</span>
-                                    <span class="quality-count">432</span>
-                                    <span class="quality-percent">4.7%</span>
-                                </div>
-                                <div class="quality-item">
-                                    <span class="quality-dot quality-error"></span>
-                                    <span class="quality-label">오류</span>
-                                    <span class="quality-count">126</span>
-                                    <span class="quality-percent">1.4%</span>
+                            <!-- 하단 80%: 원형 차트 (legend 오른쪽) -->
+                            <div class="quality-summary-chart">
+                                <svg viewBox="0 0 400 400" class="quality-pie-chart" preserveAspectRatio="xMidYMid meet">
+                                    <!-- 원형 차트: 정상 85%, 오탐 10%, 미탐 5% -->
+                                    <!-- 중심: 200, 200, 반지름: 100 -->
+                                    <!-- 정상 85%: -90도(위쪽) ~ 216도 (85% * 360 = 306도, -90 + 306 = 216도) -->
+                                    <!-- 216도 = -144도 (360 - 144 = 216), cos(-144°) = -0.809, sin(-144°) = -0.588 -->
+                                    <!-- 끝점: (200 - 80.9, 200 - 58.8) = (119.1, 141.2) -->
+                                    <path d="M 200 100 A 100 100 0 1 1 119.1 141.2 L 200 200 Z" fill="#10b981"/>
+                                    <!-- 오탐 10%: 216도 ~ 252도 (10% * 360 = 36도, 216 + 36 = 252도) -->
+                                    <!-- 252도 = -108도, cos(-108°) = -0.309, sin(-108°) = -0.951 -->
+                                    <!-- 끝점: (200 - 30.9, 200 - 95.1) = (169.1, 104.9) -->
+                                    <path d="M 200 200 L 119.1 141.2 A 100 100 0 0 1 169.1 104.9 L 200 200 Z" fill="#f59e0b"/>
+                                    <!-- 미탐 5%: 252도 ~ 270도 (5% * 360 = 18도, 252 + 18 = 270도) -->
+                                    <!-- 270도 = -90도, 끝점: (200, 100) -->
+                                    <path d="M 200 200 L 169.1 104.9 A 100 100 0 0 1 200 100 L 200 200 Z" fill="#ef4444"/>
+                                    <!-- 중앙 텍스트 -->
+                                    <text x="200" y="195" font-size="32" font-weight="700" fill="#334155" text-anchor="middle">검수 결과</text>
+                                </svg>
+                                <!-- Legend: 오른쪽에 배치 -->
+                                <div class="quality-summary-legend">
+                                    <div class="quality-summary-legend-item">
+                                        <span class="quality-summary-legend-dot quality-summary-normal"></span>
+                                        <span class="quality-summary-legend-label">정상</span>
+                                        <span class="quality-summary-legend-value">85%</span>
+                                    </div>
+                                    <div class="quality-summary-legend-item">
+                                        <span class="quality-summary-legend-dot quality-summary-warning"></span>
+                                        <span class="quality-summary-legend-label">오탐</span>
+                                        <span class="quality-summary-legend-value">10%</span>
+                                    </div>
+                                    <div class="quality-summary-legend-item">
+                                        <span class="quality-summary-legend-dot quality-summary-error"></span>
+                                        <span class="quality-summary-legend-label">미탐</span>
+                                        <span class="quality-summary-legend-value">5%</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -336,111 +421,81 @@
 
                 <!-- 하단 2개 카드 그리드 -->
                 <div class="ai-grid-bottom">
-                    <!-- 4. 파이프라인 단계 -->
+                    <!-- 4. 배포 모델 정보 -->
                     <div class="dashboard-section ai-card-regular">
-                        <h2 class="card-title">파이프라인 단계</h2>
-                        <div class="pipeline-enhanced-content">
-                            <div class="pipeline-steps-enhanced">
-                                <div class="pipeline-step-enhanced">
-                                    <div class="step-header">
-                                        <div class="step-icon">📥</div>
-                                        <span class="step-label">데이터 수집</span>
+                        <h2 class="card-title">배포 모델 정보</h2>
+                        <div class="deployment-info-content">
+                            <!-- 왼쪽 70% -->
+                            <div class="deployment-info-left">
+                                <div class="deployment-info-section">
+                                    <div class="deployment-info-item">
+                                        <span class="deployment-info-label">최신 데이터셋</span>
+                                        <span class="deployment-info-value">v3</span>
                                     </div>
-                                    <div class="step-progress-bar">
-                                        <div class="step-progress-fill" style="width: 94%"></div>
+                                    <div class="deployment-info-sublist">
+                                        <div class="deployment-info-sublist-item">2025.01.12</div>
                                     </div>
-                                    <span class="step-progress-text">94%</span>
                                 </div>
-                                <div class="pipeline-step-enhanced">
-                                    <div class="step-header">
-                                        <div class="step-icon">🔧</div>
-                                        <span class="step-label">데이터 전처리</span>
-                                    </div>
-                                    <div class="step-progress-bar">
-                                        <div class="step-progress-fill" style="width: 87%"></div>
-                                    </div>
-                                    <span class="step-progress-text">87%</span>
+                                <div class="deployment-info-item">
+                                    <span class="deployment-info-label">최신 학습 모델</span>
+                                    <span class="deployment-info-value">model_v12</span>
                                 </div>
-                                <div class="pipeline-step-enhanced">
-                                    <div class="step-header">
-                                        <div class="step-icon">📊</div>
-                                        <span class="step-label">특징 추출</span>
-                                    </div>
-                                    <div class="step-progress-bar">
-                                        <div class="step-progress-fill" style="width: 91%"></div>
-                                    </div>
-                                    <span class="step-progress-text">91%</span>
+                                <div class="deployment-info-item">
+                                    <span class="deployment-info-label">최신 모델 배포 날짜</span>
+                                    <span class="deployment-info-value">2025.01.10</span>
                                 </div>
-                                <div class="pipeline-step-enhanced">
-                                    <div class="step-header">
-                                        <div class="step-icon">✨</div>
-                                        <span class="step-label">Augmentation</span>
-                                    </div>
-                                    <div class="step-progress-bar">
-                                        <div class="step-progress-fill" style="width: 78%"></div>
-                                    </div>
-                                    <span class="step-progress-text">78%</span>
-                                </div>
-                                <div class="pipeline-step-enhanced">
-                                    <div class="step-header">
-                                        <div class="step-icon">🎯</div>
-                                        <span class="step-label">모델 학습</span>
-                                    </div>
-                                    <div class="step-progress-bar">
-                                        <div class="step-progress-fill" style="width: 0%"></div>
-                                    </div>
-                                    <span class="step-progress-text">대기</span>
-                                </div>
-                                <div class="pipeline-step-enhanced">
-                                    <div class="step-header">
-                                        <div class="step-icon">📈</div>
-                                        <span class="step-label">모델 검증</span>
-                                    </div>
-                                    <div class="step-progress-bar">
-                                        <div class="step-progress-fill" style="width: 0%"></div>
-                                    </div>
-                                    <span class="step-progress-text">대기</span>
+                            </div>
+                            <!-- 세로선 -->
+                            <div class="deployment-info-divider"></div>
+                            <!-- 오른쪽 30% -->
+                            <div class="deployment-info-right">
+                                <div class="deployment-info-item">
+                                    <span class="deployment-info-label">배포 후보 모델</span>
+                                    <span class="deployment-info-value">model_v12</span>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- 5. 모델 관리 -->
+                    <!-- 5. 데이터 검증 -->
                     <div class="dashboard-section ai-card-regular">
-                        <h2 class="card-title">모델 관리</h2>
-                        <div class="model-management-content">
-                            <div class="model-version-header">
-                                <span class="current-model-label">현재 모델 정확도</span>
-                                <span class="current-model-value">92.1%</span>
+                        <h2 class="card-title">데이터 검증 현황</h2>
+                        <div class="data-validation-content">
+                            <!-- 상단 20%: 모델 오류 강조 -->
+                            <div class="data-validation-header">
+                                <span class="data-validation-header-label">모델 오류</span>
+                                <span class="data-validation-header-value">102</span>
+                                <span class="data-validation-header-unit">건</span>
                             </div>
-                            <div class="model-comparison">
-                                <div class="model-version">
-                                    <span class="version-label">v1.0</span>
-                                    <div class="version-bar">
-                                        <div class="version-fill" style="width: 60%"></div>
-                                    </div>
-                                    <span class="version-score">60%</span>
+                            <!-- 하단 80%: 오류 종류 가로 나열 -->
+                            <div class="data-validation-list">
+                                <div class="data-validation-item">
+                                    <span class="data-validation-label">오탐</span>
+                                    <span class="data-validation-value">45</span>
                                 </div>
-                                <div class="model-version">
-                                    <span class="version-label">v1.1</span>
-                                    <div class="version-bar">
-                                        <div class="version-fill" style="width: 75%"></div>
-                                    </div>
-                                    <span class="version-score">75%</span>
+                                <div class="data-validation-item">
+                                    <span class="data-validation-label">미탐</span>
+                                    <span class="data-validation-value">28</span>
                                 </div>
-                                <div class="model-version">
-                                    <span class="version-label">v1.2</span>
-                                    <div class="version-bar">
-                                        <div class="version-fill" style="width: 85%"></div>
-                                    </div>
-                                    <span class="version-score">85%</span>
+                                <div class="data-validation-item">
+                                    <span class="data-validation-label">낮은 Confidence</span>
+                                    <span class="data-validation-value">21</span>
                                 </div>
-                                <div class="model-version">
-                                    <span class="version-label">v2.0</span>
-                                    <div class="version-bar">
-                                        <div class="version-fill" style="width: 92%"></div>
-                                    </div>
-                                    <span class="version-score">92%</span>
+                                <div class="data-validation-item">
+                                    <span class="data-validation-label">클래스 오분류</span>
+                                    <span class="data-validation-value">6</span>
+                                </div>
+                                <div class="data-validation-item">
+                                    <span class="data-validation-label">BBox 위치 오류</span>
+                                    <span class="data-validation-value">8</span>
+                                </div>
+                                <div class="data-validation-item">
+                                    <span class="data-validation-label">중복 검출</span>
+                                    <span class="data-validation-value">4</span>
+                                </div>
+                                <div class="data-validation-item">
+                                    <span class="data-validation-label">클래스 편향</span>
+                                    <span class="data-validation-value">3</span>
                                 </div>
                             </div>
                         </div>

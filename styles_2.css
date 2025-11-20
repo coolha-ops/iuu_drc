@@ -116,12 +116,13 @@ body {
 
 .dashboard {
     width: 100%;
-    min-height: calc(100vh - 60px);
+    height: calc(100vh - 60px);
     padding: 16px;
     background-color: #f5f5f5;
     display: flex;
     flex-direction: column;
     gap: 16px;
+    overflow: hidden;
 }
 
 /* 상단 통계 섹션 */
@@ -138,10 +139,11 @@ body {
 .dashboard-section {
     background-color: #fff;
     border-radius: 8px;
-    min-height: 200px;
-    padding: 8px 20px;
+    min-height: 0;
+    padding: 8px 16px;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 }
 
 .section-merged-1 {
@@ -461,6 +463,7 @@ body {
     gap: 0;
     flex: 1;
     min-height: 0;
+    max-height: 100%;
     overflow: hidden;
 }
 
@@ -472,16 +475,35 @@ body {
     min-height: 0;
     overflow: hidden;
     height: 100%;
-    padding-right: 16px;
-    margin-right: 4px;
+    padding-right: 0;
+    margin-right: 0;
 }
 
-/* 상단 3개 카드 그리드: 3열 균등 배치 */
+/* 상단 3개 카드 그리드: 상단 통계의 처음 3개 카드와 정렬 */
 .ai-grid-top {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    /* 상단 통계 섹션: 4개 카드, gap 16px (3개 gap = 48px)
+       각 카드 너비: calc((100% - 48px) / 4)
+       처음 3개 카드 총 너비: calc((100% - 48px) / 4 * 3 + 32px) = calc(75% - 36px + 32px) = calc(75% - 4px)
+       
+       AI 영역: 75% 너비 (dashboard 내용 영역 기준)
+       AI 영역 내부에서 처음 3개 카드가 차지하는 총 너비는 상단 통계와 동일해야 함
+       상단 통계 처음 3개 카드: calc(75% - 4px) (dashboard 내용 영역 기준)
+       AI 영역 내부에서: calc((75% - 4px) / 75% * 100%) = calc(100% - 5.33px)
+       각 카드: calc((100% - 5.33px - 32px) / 3) = calc((100% - 37.33px) / 3)
+       
+       더 정확하게는 상단 통계의 각 카드 너비를 AI 영역 기준으로 변환:
+       상단 통계 각 카드: calc((100% - 48px) / 4) (dashboard 내용 영역 기준)
+       AI 영역 내부에서 동일한 절대 너비를 가지려면:
+       AI 영역의 100%는 dashboard 내용 영역의 75%이므로,
+       상단 통계의 calc((100% - 48px) / 4)를 AI 영역에 적용하려면
+       calc((75% - 48px) / 4)가 아니라, 상대 비율을 고려해야 함
+       
+       가장 정확한 방법: 상단 통계 처음 3개 카드 총 너비를 기준으로 계산
+    */
+    grid-template-columns: repeat(3, calc((100% - 37.333px) / 3));
     gap: 16px;
-    flex: 6;
+    flex: 3;
     min-height: 0;
 }
 
@@ -490,8 +512,9 @@ body {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
-    flex: 4;
+    flex: 2;
     min-height: 0;
+    max-height: 40%;
 }
 
 /* AI 카드 크기 조정 */
@@ -521,49 +544,119 @@ body {
     display: flex;
     flex-direction: column;
     height: 100%;
-    gap: 8px;
+    gap: 0;
+    flex: 1;
+    min-height: 0;
 }
 
-.collection-chart {
-    flex: 1.2;
-    min-height: 0;
+.collection-header {
+    flex: 0 0 30%;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-}
-
-.collection-line-chart {
-    width: 100%;
-    height: 100%;
-    max-height: 100%;
-}
-
-.collection-stats {
-    display: flex;
-    justify-content: space-around;
+    min-height: 0;
     gap: 8px;
-    padding-top: 6px;
-    border-top: 1px solid #e2e8f0;
-    flex-shrink: 0;
+    position: relative;
+}
+
+.collection-stats-row {
+    display: flex;
+    align-items: baseline;
+    gap: 0;
+    justify-content: space-evenly;
+    width: 100%;
+    position: relative;
+}
+
+.collection-stat-group {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    flex: 1;
+    justify-content: center;
 }
 
 .collection-stat-item {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
+    align-items: baseline;
+    gap: 6px;
+    position: relative;
 }
 
-.collection-label {
-    font-size: 11px;
-    color: #64748b;
+.collection-stat-item:last-child {
+    margin-right: 0;
+}
+
+.collection-stat-label {
+    font-size: 18px;
+    color: #333;
     font-weight: 500;
 }
 
-.collection-value {
-    font-size: 16px;
-    color: #1e293b;
+.collection-stat-label-goal {
+    color: #94a3b8;
+}
+
+.collection-stat-value {
+    font-size: 32px;
     font-weight: 700;
+    color: #007bff;
+    line-height: 1;
+}
+
+.collection-stat-divider {
+    font-size: 18px;
+    color: #333;
+    font-weight: 500;
+}
+
+.collection-stat-divider-main {
+    font-size: 18px;
+    color: #cbd5e1;
+    font-weight: 400;
+    flex-shrink: 0;
+    align-self: center;
+}
+
+.collection-chart {
+    flex: 0 0 70%;
+    min-height: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    overflow: hidden;
+}
+
+.collection-upload-row {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    padding-left: 0;
+    margin-top: -4px;
+    position: relative;
+}
+
+.collection-upload-row::before {
+    content: '';
+    width: calc(25% - 10px);
+    flex-shrink: 0;
+}
+
+.collection-upload-count {
+    font-size: 12px;
+    color: #94a3b8;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.collection-bar-chart {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
 }
 
 /* 모델 학습 성능 카드 스타일 */
@@ -571,49 +664,74 @@ body {
     display: flex;
     flex-direction: column;
     height: 100%;
-    gap: 8px;
+    gap: 0;
+    flex: 1;
+    min-height: 0;
 }
 
-.performance-chart {
-    flex: 1.2;
-    min-height: 0;
+.performance-header {
+    flex: 0 0 20%;
     display: flex;
     align-items: center;
     justify-content: center;
+    min-height: 0;
 }
 
-.performance-line-chart {
-    width: 100%;
-    height: 100%;
-    max-height: 100%;
-}
-
-.performance-stats {
+.performance-stats-row {
     display: flex;
-    justify-content: space-around;
-    gap: 8px;
-    padding-top: 6px;
-    border-top: 1px solid #e2e8f0;
-    flex-shrink: 0;
+    align-items: center;
+    gap: 0;
+    justify-content: space-evenly;
+    flex-wrap: nowrap;
+    width: 100%;
 }
 
 .performance-stat-item {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 4px;
+    gap: 2px;
+    flex: 1;
 }
 
-.performance-label {
-    font-size: 11px;
+.performance-stat-label {
+    font-size: 13px;
     color: #64748b;
     font-weight: 500;
+    white-space: nowrap;
 }
 
-.performance-value {
-    font-size: 16px;
-    color: #1e293b;
+.performance-stat-value {
+    font-size: 20px;
     font-weight: 700;
+    color: #007bff;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+.performance-stat-divider {
+    font-size: 16px;
+    color: #cbd5e1;
+    font-weight: 400;
+    align-self: center;
+    flex-shrink: 0;
+}
+
+.performance-chart {
+    flex: 0 0 80%;
+    min-height: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    overflow: hidden;
+}
+
+.performance-line-chart {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
 }
 
 /* 데이터 품질 분포 카드 스타일 */
@@ -1168,5 +1286,289 @@ body {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+/* 품질 관리 요약 카드 스타일 */
+.quality-summary-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 0;
+    flex: 1;
+    min-height: 0;
+}
+
+.quality-summary-header {
+    flex: 0 0 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 0;
+}
+
+.quality-summary-stats-row {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    justify-content: center;
+}
+
+.quality-summary-stat-item {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+}
+
+.quality-summary-stat-label {
+    font-size: 18px;
+    color: #333;
+    font-weight: 500;
+}
+
+.quality-summary-stat-value {
+    font-size: 32px;
+    font-weight: 700;
+    color: #007bff;
+    line-height: 1;
+}
+
+.quality-summary-stat-divider {
+    font-size: 18px;
+    color: #333;
+    font-weight: 500;
+}
+
+.quality-summary-chart {
+    flex: 0 0 80%;
+    min-height: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    overflow: hidden;
+    gap: 20px;
+}
+
+.quality-pie-chart {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    flex: 1;
+}
+
+.quality-summary-legend {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.quality-summary-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.quality-summary-legend-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.quality-summary-legend-dot.quality-summary-normal {
+    background-color: #10b981;
+}
+
+.quality-summary-legend-dot.quality-summary-warning {
+    background-color: #f59e0b;
+}
+
+.quality-summary-legend-dot.quality-summary-error {
+    background-color: #ef4444;
+}
+
+.quality-summary-legend-label {
+    font-size: 14px;
+    color: #334155;
+    font-weight: 600;
+    min-width: 40px;
+}
+
+.quality-summary-legend-value {
+    font-size: 14px;
+    color: #475569;
+    font-weight: 700;
+}
+
+/* =========================================
+   배포 모델 정보 좌/우 영역 정렬 균형 맞추기
+   ========================================= */
+
+/* 양쪽 컬럼을 완전 1:1 비율 + 같은 분배 방식으로 */
+.deployment-info-content {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    flex: 1;
+    min-height: 0;
+    justify-content: stretch;
+    align-items: stretch;
+}
+
+.deployment-info-left,
+.deployment-info-right {
+    flex: 1 1 0;                 /* 50% : 50% 비율 */
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    justify-content: space-between;  /* 양쪽 모두 동일하게 행을 위–아래로 균등 분배 */
+    min-height: 0;
+    min-width: 0;
+}
+
+/* 오른쪽 컬럼에만 있던 별도 규칙 제거/통일 */
+.deployment-info-item,
+.deployment-info-right .deployment-info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    flex: 1;                  /* 각 행이 같은 높이를 갖도록 */
+    min-height: 0;
+    min-width: 0;
+    overflow: hidden;
+}
+
+/* 서브 리스트가 있어도 기본 행 정렬을 깨지 않도록 */
+.deployment-info-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    flex: 1;
+    justify-content: space-between;
+    min-height: 0;
+}
+
+.deployment-info-sublist {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding-left: 16px;
+    padding-top: 4px;
+}
+
+/* 라벨/값 텍스트도 좌/우 균형 있게 정렬 */
+.deployment-info-label {
+    font-size: 15px;
+    color: #334155;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
+    flex: 1 1 auto;
+}
+
+.deployment-info-value {
+    font-size: 18px;
+    color: #007bff;
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
+    flex-shrink: 0;
+    text-align: right;
+}
+
+/* 중앙 분리선은 그대로 두되 여백만 살짝 정리 */
+.deployment-info-divider {
+    width: 1px;
+    background-color: #e2e8f0;
+    flex-shrink: 0;
+    margin: 0 4px;
+}
+
+/* 데이터 검증 카드 스타일 */
+.data-validation-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 0;
+    flex: 1;
+    min-height: 0;
+    justify-content: center;
+}
+
+.data-validation-header {
+    flex: 0 0 20%;
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 6px;
+    min-height: 0;
+}
+
+.data-validation-header-label {
+    font-size: 16px;
+    color: #334155;
+    font-weight: 500;
+}
+
+.data-validation-header-value {
+    font-size: 36px;
+    color: #007bff;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.data-validation-header-unit {
+    font-size: 16px;
+    color: #334155;
+    font-weight: 500;
+}
+
+.data-validation-list {
+    flex: 0 0 80%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 0;
+    align-items: center;
+    justify-content: space-evenly;
+    min-height: 0;
+    width: 100%;
+}
+
+.data-validation-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: center;
+    min-width: 0;
+    flex: 1;
+}
+
+.data-validation-label {
+    font-size: 16px;
+    color: #64748b;
+    font-weight: 500;
+    white-space: normal;
+    text-align: center;
+    line-height: 1.3;
+    word-break: keep-all;
+    max-width: 100%;
+}
+
+.data-validation-value {
+    font-size: 24px;
+    color: #334155;
+    font-weight: 700;
+    white-space: nowrap;
+    text-align: center;
+    line-height: 1;
 }
 
