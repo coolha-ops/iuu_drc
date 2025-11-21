@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>원양어선 EM 플랫폼</title>
+    <link rel="stylesheet" href="styles_3.css">
+</head>
+<body>
+    <!-- 헤더 -->
+    <header class="header">
+        <h1 class="header-title">원양어선 EM 데이터 플랫폼</h1>
+        <div class="button-wrapper">
+            <button>옵서버Review</button>
+            <button>데이터 분석</button>
+            <button>조업결과</button>
+            <button>장비 상태</button>
+            <button>선박 플랫폼</button>
+        </div>
+    </header>
+
+    <!-- 메인 컨텐츠 -->
+    <div class="main-container">
+        <!-- 상단 40% 영역 -->
+        <div class="top-section">
+            <!-- 왼쪽 70%: 검색 및 통계 -->
+            <div class="search-stats-section">
+                <!-- 검색 영역 -->
+                <div class="search-area">
+                    <div class="search-title-area">
+                        <h2 class="search-title">EM 데이터 검색</h2>
+                        <p class="search-subtitle">원양어선 EM 데이터 플랫폼 시스템 편리한 검색 서비스를 제공합니다.</p>
+                    </div>
+                    <div class="search-input-area">
+                        <input type="text" class="main-search-input" placeholder="찾으시는 정보를 입력해주세요">
+                        <button class="main-search-button">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <path d="m21 21-4.35-4.35"></path>
+                            </svg>
+                            검색
+                        </button>
+                        <button class="ai-agent-button">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                                <path d="M2 17l10 5 10-5"></path>
+                                <path d="M2 12l10 5 10-5"></path>
+                            </svg>
+                            AI 에이전트
+                        </button>
+                    </div>
+                    <div class="popular-searches">
+                        <div class="popular-tags">
+                            <span class="popular-tag">카메라</span>
+                            <span class="popular-tag">영상</span>
+                            <span class="popular-tag">어종</span>
+                            <span class="popular-tag">선박</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- 통계 카드 4개 (1열) -->
+                <div class="stats-cards-row">
+                    <div class="stat-card">
+                        <div class="stat-number">26</div>
+                        <div class="stat-label">IUU 통계</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">142</div>
+                        <div class="stat-label">옵서버 리뷰</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">1,245</div>
+                        <div class="stat-label">어획물</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">92%</div>
+                        <div class="stat-label">장비 가동률</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 오른쪽 30%: 최근 조업 정보 -->
+            <div class="recent-operation-section">
+                <div class="recent-operation-box">
+                    <h3 class="box-title">최근 조업 정보</h3>
+                    <div class="recent-content">
+                        <p class="empty-placeholder">내용 없음</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 하단 50% 영역 -->
+        <div class="bottom-section">
+            <!-- 왼쪽 70%: AI 영역 -->
+            <div class="ai-section">
+                <!-- 상단 3개 카드 -->
+                <div class="ai-grid-top">
+                    <!-- 1. 데이터 수집 현황 -->
+                    <div class="ai-card">
+                        <h3 class="ai-card-title">데이터 수집 현황</h3>
+                        <div class="ai-card-content">
+                            <div class="collection-stats-row">
+                                <div class="collection-stat-group">
+                                    <span class="collection-stat-value">4.5TB</span>
+                                    <span class="collection-stat-divider">/</span>
+                                    <span class="collection-stat-value">5TB</span>
+                                    <span class="collection-stat-label">목표</span>
+                                </div>
+                                <span class="collection-stat-divider-main">|</span>
+                                <div class="collection-stat-group">
+                                    <span class="collection-stat-value">90%</span>
+                                    <span class="collection-stat-label">달성</span>
+                                </div>
+                            </div>
+                            <div class="collection-upload-row">
+                                <span class="collection-upload-count">업로드 영상 수: 2,430</span>
+                            </div>
+                            <div class="collection-date-row">
+                                <span class="collection-date-label">최근 업로드:</span>
+                                <span class="collection-date-value">2025.10.31</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2. 모델 학습 성능 -->
+                    <div class="ai-card">
+                        <h3 class="ai-card-title">모델 학습 성능</h3>
+                        <div class="ai-card-content">
+                            <div class="performance-stats-row">
+                                <div class="performance-stat-item">
+                                    <span class="performance-stat-label">정확도</span>
+                                    <span class="performance-stat-value">92.1%</span>
+                                </div>
+                                <span class="performance-stat-divider">|</span>
+                                <div class="performance-stat-item">
+                                    <span class="performance-stat-label">F1-Score</span>
+                                    <span class="performance-stat-value">0.895</span>
+                                </div>
+                                <span class="performance-stat-divider">|</span>
+                                <div class="performance-stat-item">
+                                    <span class="performance-stat-label">mAP</span>
+                                    <span class="performance-stat-value">0.87</span>
+                                </div>
+                                <span class="performance-stat-divider">|</span>
+                                <div class="performance-stat-item">
+                                    <span class="performance-stat-label">최종 손실</span>
+                                    <span class="performance-stat-value">0.15</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3. 품질 관리 요약 -->
+                    <div class="ai-card">
+                        <h3 class="ai-card-title">품질 관리 요약</h3>
+                        <div class="ai-card-content">
+                            <div class="quality-summary-stats-row">
+                                <div class="quality-summary-stat-item">
+                                    <span class="quality-summary-stat-label">오탐 의심</span>
+                                    <span class="quality-summary-stat-value">74건</span>
+                                </div>
+                                <span class="quality-summary-stat-divider">/</span>
+                                <div class="quality-summary-stat-item">
+                                    <span class="quality-summary-stat-label">미탐 의심</span>
+                                    <span class="quality-summary-stat-value">28건</span>
+                                </div>
+                            </div>
+                            <div class="quality-summary-legend">
+                                <div class="quality-summary-legend-item">
+                                    <span class="quality-summary-legend-dot quality-summary-normal"></span>
+                                    <div class="quality-summary-legend-content">
+                                        <span class="quality-summary-legend-value">85%</span>
+                                        <span class="quality-summary-legend-label">정상</span>
+                                    </div>
+                                </div>
+                                <div class="quality-summary-legend-item">
+                                    <span class="quality-summary-legend-dot quality-summary-warning"></span>
+                                    <div class="quality-summary-legend-content">
+                                        <span class="quality-summary-legend-value">10%</span>
+                                        <span class="quality-summary-legend-label">오탐</span>
+                                    </div>
+                                </div>
+                                <div class="quality-summary-legend-item">
+                                    <span class="quality-summary-legend-dot quality-summary-error"></span>
+                                    <div class="quality-summary-legend-content">
+                                        <span class="quality-summary-legend-value">5%</span>
+                                        <span class="quality-summary-legend-label">미탐</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 하단 2개 카드 -->
+                <div class="ai-grid-bottom">
+                    <!-- 4. 배포 모델 정보 -->
+                    <div class="ai-card">
+                        <h3 class="ai-card-title">배포 모델 정보</h3>
+                        <div class="ai-card-content">
+                            <div class="deployment-info-content">
+                                <div class="deployment-info-left">
+                                    <div class="deployment-info-section">
+                                        <div class="deployment-info-item">
+                                            <span class="deployment-info-label">최신 데이터셋</span>
+                                            <span class="deployment-info-value">v3</span>
+                                        </div>
+                                        <div class="deployment-info-sublist">
+                                            <div class="deployment-info-sublist-item">2025.01.12</div>
+                                        </div>
+                                    </div>
+                                    <div class="deployment-info-item">
+                                        <span class="deployment-info-label">최신 학습 모델</span>
+                                        <span class="deployment-info-value">model_v12</span>
+                                    </div>
+                                    <div class="deployment-info-item">
+                                        <span class="deployment-info-label">최신 모델 배포 날짜</span>
+                                        <span class="deployment-info-value">2025.01.10</span>
+                                    </div>
+                                </div>
+                                <div class="deployment-info-divider"></div>
+                                <div class="deployment-info-right">
+                                    <div class="deployment-info-item">
+                                        <span class="deployment-info-label">배포 후보 모델</span>
+                                        <span class="deployment-info-value">model_v12</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 5. 데이터 검증 -->
+                    <div class="ai-card">
+                        <h3 class="ai-card-title">데이터 검증 현황</h3>
+                        <div class="ai-card-content">
+                            <div class="data-validation-header">
+                                <span class="data-validation-header-label">모델 오류</span>
+                                <span class="data-validation-header-value">102</span>
+                                <span class="data-validation-header-unit">건</span>
+                            </div>
+                            <div class="data-validation-list">
+                                <div class="data-validation-item">
+                                    <span class="data-validation-label">오탐</span>
+                                    <span class="data-validation-value">45</span>
+                                </div>
+                                <div class="data-validation-item">
+                                    <span class="data-validation-label">미탐</span>
+                                    <span class="data-validation-value">28</span>
+                                </div>
+                                <div class="data-validation-item">
+                                    <span class="data-validation-label">낮은 Confidence</span>
+                                    <span class="data-validation-value">21</span>
+                                </div>
+                                <div class="data-validation-item">
+                                    <span class="data-validation-label">클래스 오분류</span>
+                                    <span class="data-validation-value">6</span>
+                                </div>
+                                <div class="data-validation-item">
+                                    <span class="data-validation-label">BBox 위치 오류</span>
+                                    <span class="data-validation-value">8</span>
+                                </div>
+                                <div class="data-validation-item">
+                                    <span class="data-validation-label">중복 검출</span>
+                                    <span class="data-validation-value">4</span>
+                                </div>
+                                <div class="data-validation-item">
+                                    <span class="data-validation-label">클래스 편향</span>
+                                    <span class="data-validation-value">3</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 오른쪽 30%: 선박 모니터링 지도 -->
+            <div class="vessel-monitoring-section">
+                <div class="vessel-section">
+                    <div class="map-container">
+                        <div class="map-placeholder">
+                            <!-- 활동 선박 오버레이 -->
+                            <div class="vessel-list-overlay">
+                                <h4>활동 선박</h4>
+                                <div class="vessel-label-list">
+                                    <div class="vessel-label-item">
+                                        <span class="vessel-label-color" style="background: #ff6b6b"></span>
+                                        <span class="vessel-label-name">[동원]121 강제안을</span>
+                                    </div>
+                                    <div class="vessel-label-item">
+                                        <span class="vessel-label-color" style="background: #4ecdc4"></span>
+                                        <span class="vessel-label-name">[동원]미래로치</span>
+                                    </div>
+                                    <div class="vessel-label-item">
+                                        <span class="vessel-label-color" style="background: #ffe66d"></span>
+                                        <span class="vessel-label-name">[동원]본 아미</span>
+                                    </div>
+                                    <div class="vessel-label-item">
+                                        <span class="vessel-label-color" style="background: #ff6b6b"></span>
+                                        <span class="vessel-label-name">[사조]콘코디아 지선</span>
+                                    </div>
+                                    <div class="vessel-label-item">
+                                        <span class="vessel-label-color" style="background: #4ecdc4"></span>
+                                        <span class="vessel-label-name">[사조]2315</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 어선 통계 카드 -->
+                            <div class="vessel-stat-overlay">
+                                <h3>어선 통계</h3>
+                                <div class="vessel-stat-items">
+                                    <div class="vessel-stat-item">
+                                        <span class="vessel-stat-label">조업중</span>
+                                        <span class="vessel-stat-value">-</span>
+                                    </div>
+                                    <div class="vessel-stat-item">
+                                        <span class="vessel-stat-label">비조업중</span>
+                                        <span class="vessel-stat-value">-</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="map-controls">
+                                <button class="map-btn">+</button>
+                                <button class="map-btn">-</button>
+                                <div class="compass">N</div>
+                            </div>
+                            <div class="map-dots">
+                                <div class="map-dot" style="top: 20%; left: 30%; background: #ff6b6b"></div>
+                                <div class="map-dot" style="top: 25%; left: 35%; background: #4ecdc4"></div>
+                                <div class="map-dot" style="top: 30%; left: 40%; background: #ffe66d"></div>
+                                <div class="map-dot" style="top: 35%; left: 45%; background: #ff6b6b"></div>
+                                <div class="map-dot" style="top: 40%; left: 50%; background: #4ecdc4"></div>
+                                <div class="map-dot" style="top: 45%; left: 55%; background: #ffe66d"></div>
+                                <div class="map-dot" style="top: 50%; left: 60%; background: #ff6b6b"></div>
+                                <div class="map-dot" style="top: 55%; left: 65%; background: #4ecdc4"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
