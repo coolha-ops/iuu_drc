@@ -115,6 +115,12 @@ body {
     gap: 16px;
     flex: 0 0 60%;
     min-height: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s;
+}
+
+.search-area:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .search-title-area {
@@ -175,6 +181,7 @@ body {
 
 .main-search-input {
     flex: 1;
+    max-width: 800px;
     height: 48px;
     padding: 0 16px;
     border: 1px solid #e0e0e0;
@@ -191,7 +198,7 @@ body {
 
 .main-search-button {
     height: 48px;
-    padding: 0 24px;
+    padding: 0 40px;
     background: #007bff;
     color: #fff;
     border: none;
@@ -378,6 +385,12 @@ body {
     padding: 16px;
     display: flex;
     flex-direction: column;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s;
+}
+
+.recent-operation-box:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .box-title {
@@ -451,6 +464,13 @@ body {
     flex-direction: column;
     overflow: hidden;
     min-height: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s;
+}
+
+.ai-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
 }
 
 .ai-card-header {
