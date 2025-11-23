@@ -39,7 +39,7 @@ body {
 }
 
 .header-title {
-    font-size: 18px;
+    font-size: 24px;
     font-weight: 600;
     color: #333;
 }
@@ -115,12 +115,8 @@ body {
     gap: 16px;
     flex: 0 0 60%;
     min-height: 0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     transition: all 0.2s;
-}
-
-.search-area:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    justify-content: center;
 }
 
 .search-title-area {
