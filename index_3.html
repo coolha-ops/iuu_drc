@@ -9,7 +9,13 @@
 <body>
     <!-- 헤더 -->
     <header class="header">
-        <h1 class="header-title">원양어선 EM 데이터 플랫폼</h1>
+        <div class="header-title-wrapper">
+            <img src="image/Emblem_of_the_Government_of_the_Republic_of_Korea.svg.png" alt="대한민국 정부 상징" class="header-logo">
+            <div class="header-text-wrapper">
+                <div class="header-subtitle">Data Review Center</div>
+                <h1 class="header-title">원양어선 EM 데이터 플랫폼</h1>
+            </div>
+        </div>
         <div class="button-wrapper">
             <button>AI 모델 운영</button>
             <button>옵서버 Review</button>
@@ -146,7 +152,7 @@
                                     </div>
                                     <div class="vessel-stat-item">
                                         <span class="vessel-stat-label">비조업중</span>
-                                        <span class="vessel-stat-value">-</span>
+                                        <span class="vessel-stat-value">5</span>
                                     </div>
                                 </div>
                             </div>
@@ -156,14 +162,14 @@
                                 <div class="compass">N</div>
                             </div>
                             <div class="map-dots">
-                                <div class="map-dot" style="top: 20%; left: 30%; background: #ff6b6b"></div>
-                                <div class="map-dot" style="top: 25%; left: 35%; background: #4ecdc4"></div>
-                                <div class="map-dot" style="top: 30%; left: 40%; background: #ffe66d"></div>
-                                <div class="map-dot" style="top: 35%; left: 45%; background: #ff6b6b"></div>
-                                <div class="map-dot" style="top: 40%; left: 50%; background: #4ecdc4"></div>
-                                <div class="map-dot" style="top: 45%; left: 55%; background: #ffe66d"></div>
-                                <div class="map-dot" style="top: 50%; left: 60%; background: #ff6b6b"></div>
-                                <div class="map-dot" style="top: 55%; left: 65%; background: #4ecdc4"></div>
+                                <div class="map-dot" style="top: 35%; left: 38%; background: #ff6b6b"></div>
+                                <div class="map-dot" style="top: 42%; left: 45%; background: #4ecdc4"></div>
+                                <div class="map-dot" style="top: 38%; left: 52%; background: #ffe66d"></div>
+                                <div class="map-dot" style="top: 48%; left: 42%; background: #ff6b6b"></div>
+                                <div class="map-dot" style="top: 45%; left: 50%; background: #4ecdc4"></div>
+                                <div class="map-dot" style="top: 52%; left: 48%; background: #ffe66d"></div>
+                                <div class="map-dot" style="top: 40%; left: 58%; background: #ff6b6b"></div>
+                                <div class="map-dot" style="top: 50%; left: 55%; background: #4ecdc4"></div>
                             </div>
                         </div>
                     </div>
@@ -280,24 +286,30 @@
                             </div>
                             <div class="quality-summary-legend">
                                 <div class="quality-summary-legend-item">
-                                    <span class="quality-summary-legend-dot quality-summary-normal"></span>
-                                    <div class="quality-summary-legend-content">
-                                        <span class="quality-summary-legend-value">85%</span>
+                                    <div class="quality-summary-legend-icon-label">
+                                        <span class="quality-summary-legend-dot quality-summary-normal"></span>
                                         <span class="quality-summary-legend-label">정상</span>
                                     </div>
-                                </div>
-                                <div class="quality-summary-legend-item">
-                                    <span class="quality-summary-legend-dot quality-summary-warning"></span>
                                     <div class="quality-summary-legend-content">
-                                        <span class="quality-summary-legend-value">10%</span>
-                                        <span class="quality-summary-legend-label">오탐</span>
+                                        <span class="quality-summary-legend-value">85%</span>
                                     </div>
                                 </div>
                                 <div class="quality-summary-legend-item">
-                                    <span class="quality-summary-legend-dot quality-summary-error"></span>
+                                    <div class="quality-summary-legend-icon-label">
+                                        <span class="quality-summary-legend-dot quality-summary-warning"></span>
+                                        <span class="quality-summary-legend-label">오탐</span>
+                                    </div>
+                                    <div class="quality-summary-legend-content">
+                                        <span class="quality-summary-legend-value">10%</span>
+                                    </div>
+                                </div>
+                                <div class="quality-summary-legend-item">
+                                    <div class="quality-summary-legend-icon-label">
+                                        <span class="quality-summary-legend-dot quality-summary-error"></span>
+                                        <span class="quality-summary-legend-label">미탐</span>
+                                    </div>
                                     <div class="quality-summary-legend-content">
                                         <span class="quality-summary-legend-value">5%</span>
-                                        <span class="quality-summary-legend-label">미탐</span>
                                     </div>
                                 </div>
                             </div>
@@ -351,9 +363,81 @@
             <!-- 오른쪽 30%: 최근 조업 정보 -->
             <div class="recent-operation-section">
                 <div class="recent-operation-box">
-                    <h3 class="box-title">최근 조업 결과</h3>
+                    <div class="box-title-wrapper">
+                        <h3 class="box-title">최근 조업 결과</h3>
+                        <span class="more-link">더보기</span>
+                    </div>
                     <div class="recent-content">
-                        <p class="empty-placeholder">내용 없음</p>
+                        <table class="operation-table">
+                            <thead>
+                                <tr>
+                                    <th>일일보고일시</th>
+                                    <th>선사명</th>
+                                    <th>선박명</th>
+                                    <th>어획실적</th>
+                                    <th>쿼터량(백분율)</th>
+                                    <th>IUU 여부</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>2025.01.15 14:32:15</td>
+                                    <td>동원</td>
+                                    <td>121</td>
+                                    <td>125.5t</td>
+                                    <td>78.3%</td>
+                                    <td>정상</td>
+                                </tr>
+                                <tr>
+                                    <td>2025.01.15 13:28:42</td>
+                                    <td>사조</td>
+                                    <td>111</td>
+                                    <td>98.2t</td>
+                                    <td>62.1%</td>
+                                    <td>정상</td>
+                                </tr>
+                                <tr>
+                                    <td>2025.01.15 12:15:33</td>
+                                    <td>동원</td>
+                                    <td>161</td>
+                                    <td>156.8t</td>
+                                    <td>89.5%</td>
+                                    <td>정상</td>
+                                </tr>
+                                <tr>
+                                    <td>2025.01.15 11:45:21</td>
+                                    <td>사조</td>
+                                    <td>211</td>
+                                    <td>87.3t</td>
+                                    <td>54.2%</td>
+                                    <td>의심</td>
+                                </tr>
+                                <tr>
+                                    <td>2025.01.15 10:22:18</td>
+                                    <td>동원</td>
+                                    <td>134</td>
+                                    <td>142.6t</td>
+                                    <td>81.7%</td>
+                                    <td>정상</td>
+                                </tr>
+                                <tr>
+                                    <td>2025.01.15 09:18:55</td>
+                                    <td>동원</td>
+                                    <td>121</td>
+                                    <td>112.4t</td>
+                                    <td>70.3%</td>
+                                    <td>정상</td>
+                                </tr>
+                                <tr>
+                                    <td>2025.01.15 08:35:12</td>
+                                    <td>사조</td>
+                                    <td>111</td>
+                                    <td>95.7t</td>
+                                    <td>59.8%</td>
+                                    <td>정상</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

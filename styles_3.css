@@ -38,10 +38,40 @@ body {
     box-sizing: border-box;
 }
 
+.header-title-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.header-logo {
+    height: auto;
+    width: auto;
+    max-height: 48px;
+    object-fit: contain;
+    align-self: center;
+}
+
+.header-text-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2px;
+}
+
+.header-subtitle {
+    font-size: 14px;
+    font-weight: 400;
+    color: #666;
+    line-height: 1;
+}
+
 .header-title {
     font-size: 24px;
     font-weight: 600;
     color: #333;
+    margin: 0;
+    line-height: 1.2;
 }
 
 .button-wrapper {
@@ -389,25 +419,125 @@ body {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
+.box-title-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
 .box-title {
     font-size: 18px;
     font-weight: 700;
     color: #333;
-    margin-bottom: 16px;
+    margin: 0;
+}
+
+.more-link {
+    font-size: 14px;
+    color: #007bff;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.more-link:hover {
+    color: #0056b3;
+    text-decoration: underline;
 }
 
 .recent-content {
     flex: 1;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
     min-height: 0;
+    overflow: hidden;
 }
 
 .empty-placeholder {
     font-size: 14px;
     color: #94a3b8;
     font-style: italic;
+}
+
+/* 조업 결과 테이블 */
+.operation-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    table-layout: fixed;
+}
+
+.operation-table thead {
+    background-color: #f8f9fa;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.operation-table th {
+    padding: 10px 8px;
+    text-align: left;
+    font-weight: 600;
+    color: #333;
+    font-size: 13px;
+    border-bottom: 2px solid #e2e8f0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.operation-table td {
+    padding: 8px;
+    border-bottom: 1px solid #e2e8f0;
+    color: #334155;
+    font-size: 13px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.operation-table tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+.operation-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* 테이블 컬럼 너비 조정 */
+.operation-table th:nth-child(1),
+.operation-table td:nth-child(1) {
+    width: 28%;
+    min-width: 160px;
+    white-space: normal;
+    word-break: keep-all;
+}
+
+.operation-table th:nth-child(2),
+.operation-table td:nth-child(2) {
+    width: 10%;
+}
+
+.operation-table th:nth-child(3),
+.operation-table td:nth-child(3) {
+    width: 10%;
+}
+
+.operation-table th:nth-child(4),
+.operation-table td:nth-child(4) {
+    width: 12%;
+}
+
+.operation-table th:nth-child(5),
+.operation-table td:nth-child(5) {
+    width: 18%;
+}
+
+.operation-table th:nth-child(6),
+.operation-table td:nth-child(6) {
+    width: 12%;
 }
 
 /* 하단 40% 영역 */
@@ -479,10 +609,24 @@ body {
 }
 
 .ai-card-title {
+    position: relative;
+    padding-left: 12px;
     font-size: 16px;
     font-weight: 700;
     color: #333;
     flex-shrink: 0;
+}
+
+.ai-card-title::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 60%;
+    background-color: #333;
+    border-radius: 2px;
 }
 
 .ai-card-content {
@@ -735,7 +879,7 @@ body {
     align-items: baseline;
     gap: 8px;
     justify-content: center;
-    margin-bottom: 16px;
+    margin-bottom: 8px;
 }
 
 .quality-summary-stat-item {
@@ -777,6 +921,12 @@ body {
     align-items: center;
     gap: 8px;
     flex-direction: column;
+}
+
+.quality-summary-legend-icon-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
 }
 
 .quality-summary-legend-content {
@@ -1007,10 +1157,10 @@ body {
     height: 100%;
     position: relative;
     background: #ffffff;
-    background-image: 
-        linear-gradient(rgba(74, 144, 226, 0.08) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(74, 144, 226, 0.08) 1px, transparent 1px);
-    background-size: 24px 24px;
+    background-image: url('image/rfmo_shapefile.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     border-radius: 8px;
     flex: 1;
     min-height: 0;
@@ -1021,9 +1171,12 @@ body {
     position: absolute;
     left: 12px;
     top: 12px;
-    bottom: 12px;
-    width: 180px;
-    background: rgba(255, 255, 255, 0.95);
+    width: auto;
+    min-width: 120px;
+    max-width: 180px;
+    height: auto;
+    max-height: calc(100% - 24px);
+    background: rgba(255, 255, 255, 0.7);
     border-radius: 8px;
     padding: 12px;
     box-shadow: 0 4px 6px rgba(74, 144, 226, 0.1);
@@ -1084,7 +1237,7 @@ body {
     position: absolute;
     top: 12px;
     right: 12px;
-    background: #ffffff;
+    background: rgba(255, 255, 255, 0.7);
     border-radius: 10px;
     padding: 10px;
     box-shadow: 0 10px 15px rgba(74, 144, 226, 0.1);
