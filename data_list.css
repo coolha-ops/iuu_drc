@@ -37,6 +37,13 @@ html, body {
     max-width: 1400px;
 }
 
+.search-guide-text {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 16px;
+    line-height: 1.5;
+}
+
 .search-filter-row {
     display: flex;
     align-items: flex-end;
@@ -168,10 +175,10 @@ html, body {
     display: flex;
     align-items: center;
     gap: 12px;
-    margin-top: 16px;
-    padding-top: 16px;
-    border-top: 1px solid #e0e0e0;
-    flex-wrap: wrap;
+    margin-top: 12px;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    max-width: 100%;
 }
 
 .selected-filters-label {
@@ -179,12 +186,16 @@ html, body {
     font-weight: 600;
     color: #333;
     white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .selected-filters-tags {
     display: flex;
     gap: 8px;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    flex: 1;
+    min-width: 0;
 }
 
 .selected-filter-tag {
@@ -197,6 +208,15 @@ html, body {
     border-radius: 16px;
     font-size: 13px;
     font-weight: 500;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.selected-filter-tag.ellipsis-tag {
+    background: transparent;
+    color: #666;
+    padding: 6px 8px;
+    cursor: default;
 }
 
 .tag-close {
@@ -465,7 +485,7 @@ html, body {
 }
 
 .more-link {
-    font-size: 24px;
+    font-size: 32px;
     color: #000;
     text-decoration: none;
     font-weight: 700;

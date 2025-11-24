@@ -102,6 +102,12 @@ body {
     box-shadow: 0 2px 8px rgba(0, 123, 255, 0.2);
 }
 
+.button-wrapper button.active {
+    background-color: #007bff;
+    color: #fff;
+    border-color: #007bff;
+}
+
 /* 메인 컨텐츠 */
 .main-container {
     width: 100%;
@@ -438,7 +444,7 @@ body {
     color: #007bff;
     font-weight: 500;
     cursor: pointer;
-    text-decoration: none;
+    text-decoration: underline;
     transition: color 0.2s;
 }
 
@@ -678,6 +684,11 @@ body {
     line-height: 1;
 }
 
+.collection-stat-value-target {
+    font-size: 32px;
+    color: #000;
+}
+
 .collection-stat-divider {
     font-size: 24px;
     color: #333;
@@ -796,7 +807,7 @@ body {
 }
 
 .performance-stat-label {
-    font-size: 14px;
+    font-size: 18px;
     color: #64748b;
     font-weight: 500;
     white-space: nowrap;
@@ -874,12 +885,18 @@ body {
     align-items: center;
 }
 
-.quality-summary-stats-row {
+.quality-summary-container {
     display: flex;
-    align-items: baseline;
-    gap: 8px;
+    align-items: flex-start;
+    gap: 24px;
     justify-content: center;
-    margin-bottom: 8px;
+}
+
+.quality-summary-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
 }
 
 .quality-summary-stat-item {
@@ -905,35 +922,19 @@ body {
     font-size: 14px;
     color: #333;
     font-weight: 500;
-}
-
-.quality-summary-legend {
-    display: flex;
-    flex-direction: row;
-    gap: 24px;
-    justify-content: center;
-    align-items: center;
-    flex: 1;
+    margin: 0 8px;
+    align-self: center;
 }
 
 .quality-summary-legend-item {
     display: flex;
     align-items: center;
     gap: 8px;
-    flex-direction: column;
+    flex-direction: row;
 }
 
-.quality-summary-legend-icon-label {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.quality-summary-legend-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
+.quality-summary-legend-label + .quality-summary-legend-value {
+    margin-left: -2px;
 }
 
 .quality-summary-legend-dot {
@@ -960,6 +961,7 @@ body {
     color: #334155;
     font-weight: 600;
     min-width: 40px;
+    margin-right: 2px;
 }
 
 .quality-summary-legend-value {
