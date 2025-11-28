@@ -23,6 +23,62 @@
             <button>조업 정보</button>
             <button>선박 모니터링</button>
         </div>
+        <!-- 알림 아이콘 -->
+        <div class="notification-icon-wrapper">
+            <div class="notification-icon">
+                <img src="image/notification.png" alt="알림" class="notification-icon-img">
+                <span class="notification-badge">3</span>
+            </div>
+        </div>
+        <!-- 사용자 정보 영역 -->
+        <div class="user-info-wrapper">
+            <div class="user-profile">
+                <div class="user-avatar">
+                    <span class="user-initial">홍</span>
+                </div>
+                <div class="user-details">
+                    <span class="user-name">홍 길 동</span>
+                    <span class="user-role">관리자</span>
+                </div>
+                <button class="user-menu-toggle">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 9l6 6 6-6"></path>
+                    </svg>
+                </button>
+            </div>
+            <!-- 드롭다운 메뉴 (기본 숨김) -->
+            <div class="user-menu-dropdown">
+                <a href="#" class="user-menu-item">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                    프로필
+                </a>
+                <a href="#" class="user-menu-item">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path d="M12 1v6m0 6v6M5.64 5.64l4.24 4.24m4.24 4.24l4.24 4.24M1 12h6m6 0h6M5.64 18.36l4.24-4.24m4.24-4.24l4.24-4.24"></path>
+                    </svg>
+                    설정
+                </a>
+                <div class="user-menu-divider"></div>
+                <a href="#" class="user-menu-item user-menu-logout">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                        <polyline points="16 17 21 12 16 7"></polyline>
+                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                    </svg>
+                    로그아웃
+                </a>
+            </div>
+        </div>
+        <!-- 환경설정 아이콘 -->
+        <div class="settings-icon-wrapper">
+            <button class="settings-icon">
+                <img src="image/settings.png" alt="설정" class="settings-icon-img">
+            </button>
+        </div>
     </header>
 
     <!-- 메인 컨텐츠 -->
@@ -476,6 +532,26 @@
             </div>
         </div>
     </div>
+
+    <script>
+        // 사용자 메뉴 토글
+        const userProfile = document.querySelector('.user-profile');
+        const userInfoWrapper = document.querySelector('.user-info-wrapper');
+        
+        if (userProfile && userInfoWrapper) {
+            userProfile.addEventListener('click', function(e) {
+                e.stopPropagation();
+                userInfoWrapper.classList.toggle('active');
+            });
+            
+            // 외부 클릭 시 메뉴 닫기
+            document.addEventListener('click', function(e) {
+                if (!userInfoWrapper.contains(e.target)) {
+                    userInfoWrapper.classList.remove('active');
+                }
+            });
+        }
+    </script>
 </body>
 </html>
 
