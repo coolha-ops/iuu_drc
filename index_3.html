@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>원양어선 EM 플랫폼</title>
     <link rel="stylesheet" href="styles_3.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 </head>
 <body>
     <!-- 헤더 -->
@@ -56,10 +57,7 @@
                     프로필
                 </a>
                 <a href="#" class="user-menu-item">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="3"></circle>
-                        <path d="M12 1v6m0 6v6M5.64 5.64l4.24 4.24m4.24 4.24l4.24 4.24M1 12h6m6 0h6M5.64 18.36l4.24-4.24m4.24-4.24l4.24-4.24"></path>
-                    </svg>
+                    <img src="image/settings.png" alt="설정" class="user-menu-icon-img">
                     설정
                 </a>
                 <div class="user-menu-divider"></div>
@@ -73,12 +71,6 @@
                 </a>
             </div>
         </div>
-        <!-- 환경설정 아이콘 -->
-        <div class="settings-icon-wrapper">
-            <button class="settings-icon">
-                <img src="image/settings.png" alt="설정" class="settings-icon-img">
-            </button>
-        </div>
     </header>
 
     <!-- 메인 컨텐츠 -->
@@ -88,10 +80,10 @@
             <!-- 왼쪽 70%: 검색 및 통계 -->
             <div class="search-stats-section">
                 <!-- 검색 영역 -->
-                <div class="search-area">
+                <div class="search-area" style="background: #445;">
                     <div class="search-title-area">
-                        <h2 class="search-title">EM 데이터 검색</h2>
-                        <p class="search-subtitle">원양어선 EM 데이터 플랫폼 시스템 편리한 검색 서비스를 제공합니다.</p>
+                        <h2 class="search-title" style="color: white;">EM 데이터 검색</h2>
+                        <p class="search-subtitle" style="color: #fcfcfc;">원양어선 EM 데이터 플랫폼 시스템 편리한 검색 서비스를 제공합니다.</p>
                     </div>
                     <div class="search-input-area">
                         <input type="text" class="main-search-input" placeholder="찾으시는 정보를 입력해주세요">
@@ -112,7 +104,7 @@
                         </button>
                     </div>
                     <div class="popular-searches">
-                        <span class="popular-label">키워드 검색:</span>
+                        <span class="popular-label" style="color: white;">키워드 검색:</span>
                         <div class="popular-tags">
                             <span class="popular-tag">카메라</span>
                             <span class="popular-tag">영상</span>
@@ -123,46 +115,102 @@
                 </div>
                 <!-- 통계 카드 4개 (1열) -->
                 <div class="stats-cards-row">
-                    <div class="stat-card">
-                        <div class="stat-number">
-                            <span class="stat-prefix">보고</span>
-                            <span class="stat-main-number">26</span>
-                            <span class="stat-suffix">건</span>
+                    <div class="stat-card stat-card-doughnut">
+                        <div class="stat-header">
+                            <div class="stat-label">옵서버 리뷰</div>
+                            <div class="stat-date-ref">업데이트: 2025.11.03</div>
                         </div>
-                        <div class="stat-label">IUU 통계</div>
-                        <div class="stat-date-ref">업데이트: 2025.11.10 15:00:00 UTC</div>
+                        <div class="stat-content-wrapper">
+                            <div class="stat-chart-container">
+                                <canvas id="observerChart"></canvas>
+                                <div class="chart-center-text">71%</div>
+                            </div>
+                            <div class="stat-text-container">
+                                <div class="stat-number">
+                                    <span class="stat-main-number">142</span>
+                                    <span class="stat-divider">/</span>
+                                    <span class="stat-secondary-number">200</span>
+                                    <span class="stat-suffix">건</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="stat-card">
-                        <div class="stat-number">
-                            <span class="stat-main-number">142</span>
-                            <span class="stat-divider">/</span>
-                            <span class="stat-secondary-number">200</span>
-                            <span class="stat-suffix">건</span>
-                            <span class="stat-small-text">(71% 완료)</span>
+                    <div class="stat-card stat-card-doughnut stat-card-iuu">
+                        <div class="stat-header">
+                            <div class="stat-label">IUU 통계</div>
+                            <div class="stat-date-ref">업데이트: 2025.11.10 15:00:00 UTC</div>
                         </div>
-                        <div class="stat-label">옵서버 리뷰</div>
-                        <div class="stat-date-ref">업데이트: 2025.11.03</div>
+                        <div class="stat-content-wrapper">
+                            <div class="stat-chart-container">
+                                <canvas id="iuuChart"></canvas>
+                                <div class="chart-center-text">26%</div>
+                            </div>
+                            <div class="stat-text-container">
+                                <div class="stat-number">
+                                    <span class="stat-prefix">오늘</span>
+                                    <span class="stat-main-number">26</span>
+                                    <span class="stat-divider">/</span>
+                                    <span class="stat-text">총</span>
+                                    <span class="stat-secondary-number">100</span>
+                                    <span class="stat-suffix">건</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="stat-card">
-                        <div class="stat-number">
-                            <span class="stat-text">목표종</span>
-                            <span class="stat-main-number">142</span>
-                            <span class="stat-text">종</span>
-                            <span class="stat-divider">|</span>
-                            <span class="stat-text">부수어획종</span>
-                            <span class="stat-main-number">5</span>
-                            <span class="stat-text">종</span>
+                    <div class="stat-card stat-card-doughnut">
+                        <div class="stat-header">
+                            <div class="stat-label">어획물</div>
+                            <div class="stat-date-ref">업데이트: 2025.11.10 15:00:00 UTC</div>
                         </div>
-                        <div class="stat-label">어획물</div>
-                        <div class="stat-date-ref">업데이트: 2025.11.10 15:00:00 UTC</div>
+                        <div class="stat-content-wrapper">
+                            <div class="stat-chart-container">
+                                <canvas id="catchChart"></canvas>
+                                <div class="chart-center-text">96.6%</div>
+                            </div>
+                            <div class="stat-text-container">
+                                <div class="catch-items">
+                                    <div class="catch-item-group">
+                                        <div class="catch-numbers">
+                                            <span class="catch-main-number">142</span>
+                                            <span class="catch-unit">마리</span>
+                                        </div>
+                                        <div class="catch-label-text">목표종</div>
+                                    </div>
+                                    <span class="catch-divider">|</span>
+                                    <div class="catch-item-group">
+                                        <div class="catch-numbers">
+                                            <span class="catch-main-number catch-bycatch">5</span>
+                                            <span class="catch-unit">마리</span>
+                                        </div>
+                                        <div class="catch-label-text">부수어획종</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="stat-card">
-                        <div class="stat-number">
-                            <span class="stat-main-number">92%</span>
-                            <span class="stat-error-text">오류 9건</span>
+                    <div class="stat-card stat-card-doughnut">
+                        <div class="stat-header">
+                            <div class="stat-label">장비 작동률</div>
+                            <div class="stat-date-ref">업데이트: 2025.11.10 15:00:00 UTC</div>
                         </div>
-                        <div class="stat-label">장비 가동률</div>
-                        <div class="stat-date-ref">업데이트: 2025.11.10 15:00:00 UTC</div>
+                        <div class="stat-content-wrapper">
+                            <div class="stat-chart-container">
+                                <canvas id="equipmentChart"></canvas>
+                                <div class="chart-center-text">95%</div>
+                            </div>
+                            <div class="stat-text-container">
+                                <div class="stat-normal-text">
+                                    <span class="stat-label-text">정상</span>
+                                    <span class="stat-main-number stat-normal-number">380</span>
+                                    <span class="stat-suffix">건</span>
+                                </div>
+                                <div class="stat-error-text">
+                                    <span class="stat-label-text">오류</span>
+                                    <span class="stat-main-number stat-error-number">20</span>
+                                    <span class="stat-suffix">건</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -228,7 +276,7 @@
                                     </div>
                                     <div class="vessel-stat-item">
                                         <span class="vessel-stat-label">비조업중</span>
-                                        <span class="vessel-stat-value">5</span>
+                                        <span class="vessel-stat-value">10</span>
                                     </div>
                                 </div>
                             </div>
@@ -302,8 +350,8 @@
                                     <div class="collection-stat-group">
                                         <span class="collection-stat-value">4.5TB</span>
                                         <span class="collection-stat-divider">/</span>
-                                        <span class="collection-stat-value collection-stat-value-target">5TB</span>
                                         <span class="collection-stat-label">목표</span>
+                                        <span class="collection-stat-value collection-stat-value-target">5TB</span>
                                     </div>
                                     <span class="collection-stat-divider-main">|</span>
                                     <div class="collection-stat-group">
@@ -336,23 +384,23 @@
                         <div class="ai-card-content">
                             <div class="performance-stats-row">
                                 <div class="performance-stat-item">
-                                    <span class="performance-stat-label">정확도</span>
                                     <span class="performance-stat-value">92.1%</span>
+                                    <span class="performance-stat-label">정확도</span>
                                 </div>
                                 <span class="performance-stat-divider">|</span>
                                 <div class="performance-stat-item">
-                                    <span class="performance-stat-label">F1-Score</span>
                                     <span class="performance-stat-value">0.895</span>
+                                    <span class="performance-stat-label">F1-Score</span>
                                 </div>
                                 <span class="performance-stat-divider">|</span>
                                 <div class="performance-stat-item">
-                                    <span class="performance-stat-label">mAP</span>
                                     <span class="performance-stat-value">0.87</span>
+                                    <span class="performance-stat-label">mAP</span>
                                 </div>
                                 <span class="performance-stat-divider">|</span>
                                 <div class="performance-stat-item">
-                                    <span class="performance-stat-label">최종 손실</span>
                                     <span class="performance-stat-value">0.15</span>
+                                    <span class="performance-stat-label">최종 손실</span>
                                 </div>
                             </div>
                         </div>
@@ -366,39 +414,29 @@
                         <h3 class="ai-card-title">품질 관리 요약</h3>
                         <div class="ai-card-content">
                             <div class="quality-summary-container">
-                                <div class="quality-summary-column">
-                                    <div class="quality-summary-stat-item">
-                                        <span class="quality-summary-stat-label">정상</span>
-                                        <span class="quality-summary-stat-value">578건</span>
+                                <div class="quality-summary-top-row">
+                                    <div class="quality-summary-column-item">
+                                        <div class="quality-summary-top-item">
+                                            <span class="quality-summary-top-label">정상</span>
+                                            <span class="quality-summary-top-percent">85%</span>
+                                        </div>
+                                        <span class="quality-summary-bottom-value quality-summary-stat-normal">578건</span>
                                     </div>
-                                    <div class="quality-summary-legend-item">
-                                        <span class="quality-summary-legend-dot quality-summary-normal"></span>
-                                        <span class="quality-summary-legend-label">정상</span>
-                                        <span class="quality-summary-legend-value">85%</span>
+                                    <span class="quality-summary-divider">|</span>
+                                    <div class="quality-summary-column-item">
+                                        <div class="quality-summary-top-item">
+                                            <span class="quality-summary-top-label">오탐</span>
+                                            <span class="quality-summary-top-percent">10%</span>
+                                        </div>
+                                        <span class="quality-summary-bottom-value quality-summary-stat-warning">74건</span>
                                     </div>
-                                </div>
-                                <span class="quality-summary-stat-divider">|</span>
-                                <div class="quality-summary-column">
-                                    <div class="quality-summary-stat-item">
-                                        <span class="quality-summary-stat-label">오탐</span>
-                                        <span class="quality-summary-stat-value">74건</span>
-                                    </div>
-                                    <div class="quality-summary-legend-item">
-                                        <span class="quality-summary-legend-dot quality-summary-warning"></span>
-                                        <span class="quality-summary-legend-label">오탐</span>
-                                        <span class="quality-summary-legend-value">10%</span>
-                                    </div>
-                                </div>
-                                <span class="quality-summary-stat-divider">|</span>
-                                <div class="quality-summary-column">
-                                    <div class="quality-summary-stat-item">
-                                        <span class="quality-summary-stat-label">미탐</span>
-                                        <span class="quality-summary-stat-value">28건</span>
-                                    </div>
-                                    <div class="quality-summary-legend-item">
-                                        <span class="quality-summary-legend-dot quality-summary-error"></span>
-                                        <span class="quality-summary-legend-label">미탐</span>
-                                        <span class="quality-summary-legend-value">5%</span>
+                                    <span class="quality-summary-divider">|</span>
+                                    <div class="quality-summary-column-item">
+                                        <div class="quality-summary-top-item">
+                                            <span class="quality-summary-top-label">미탐</span>
+                                            <span class="quality-summary-top-percent">5%</span>
+                                        </div>
+                                        <span class="quality-summary-bottom-value quality-summary-stat-error">28건</span>
                                     </div>
                                 </div>
                             </div>
@@ -410,7 +448,7 @@
                         <h3 class="ai-card-title">데이터 검증 현황</h3>
                         <div class="ai-card-content">
                             <div class="data-validation-header">
-                                <span class="data-validation-header-label">모델 오류</span>
+                                <span class="data-validation-header-label">총 모델 오류</span>
                                 <span class="data-validation-header-value">102</span>
                                 <span class="data-validation-header-unit">건</span>
                             </div>
@@ -424,7 +462,7 @@
                                     <span class="data-validation-value">28</span>
                                 </div>
                                 <div class="data-validation-item">
-                                    <span class="data-validation-label">낮은 Confidence</span>
+                                    <span class="data-validation-label">Low Confidence</span>
                                     <span class="data-validation-value">21</span>
                                 </div>
                                 <div class="data-validation-item">
@@ -432,7 +470,7 @@
                                     <span class="data-validation-value">6</span>
                                 </div>
                                 <div class="data-validation-item">
-                                    <span class="data-validation-label">Box 위치 오류</span>
+                                    <span class="data-validation-label">Bbox 위치 오류</span>
                                     <span class="data-validation-value">8</span>
                                 </div>
                                 <div class="data-validation-item">
@@ -509,22 +547,6 @@
                                     <td>81.7%</td>
                                     <td>정상</td>
                                 </tr>
-                                <tr>
-                                    <td>2025.11.15 09:18:55</td>
-                                    <td>동원</td>
-                                    <td>121</td>
-                                    <td>112.4t</td>
-                                    <td>70.3%</td>
-                                    <td>정상</td>
-                                </tr>
-                                <tr>
-                                    <td>2025.11.15 08:35:12</td>
-                                    <td>사조</td>
-                                    <td>111</td>
-                                    <td>95.7t</td>
-                                    <td>59.8%</td>
-                                    <td>정상</td>
-                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -548,6 +570,118 @@
             document.addEventListener('click', function(e) {
                 if (!userInfoWrapper.contains(e.target)) {
                     userInfoWrapper.classList.remove('active');
+                }
+            });
+        }
+
+        // IUU 통계 - 도넛 차트
+        const iuuCtx = document.getElementById('iuuChart');
+        if (iuuCtx) {
+            new Chart(iuuCtx, {
+                type: 'doughnut',
+                data: {
+                    datasets: [{
+                        data: [26, 74],
+                        backgroundColor: ['#ef4444', '#e0e0e0'],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            enabled: false
+                        }
+                    },
+                    cutout: '70%'
+                }
+            });
+        }
+
+        // 옵서버 리뷰 - 도넛 차트
+        const observerCtx = document.getElementById('observerChart');
+        if (observerCtx) {
+            new Chart(observerCtx, {
+                type: 'doughnut',
+                data: {
+                    datasets: [{
+                        data: [71, 29],
+                        backgroundColor: ['#007bff', '#e0e0e0'],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            enabled: false
+                        }
+                    },
+                    cutout: '70%'
+                }
+            });
+        }
+
+        // 어획물 - 도넛 차트 (목표종 142, 부수어획종 5)
+        const catchCtx = document.getElementById('catchChart');
+        if (catchCtx) {
+            new Chart(catchCtx, {
+                type: 'doughnut',
+                data: {
+                    datasets: [{
+                        data: [142, 5],
+                        backgroundColor: ['#007bff', '#ef4444'],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            enabled: false
+                        }
+                    },
+                    cutout: '70%'
+                }
+            });
+        }
+
+        // 장비 작동률 - 도넛 차트 (380건 정상, 20건 오류)
+        const equipmentCtx = document.getElementById('equipmentChart');
+        if (equipmentCtx) {
+            new Chart(equipmentCtx, {
+                type: 'doughnut',
+                data: {
+                    datasets: [{
+                        data: [380, 20],
+                        backgroundColor: ['#22c55e', '#ef4444'],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            enabled: false
+                        }
+                    },
+                    cutout: '70%'
                 }
             });
         }
