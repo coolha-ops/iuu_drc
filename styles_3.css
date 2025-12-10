@@ -601,6 +601,58 @@ body {
     min-width: 0;
 }
 
+/* 옵서버 리뷰 통계 스타일 */
+.observer-stat-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.observer-stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+}
+
+.observer-stat-numbers {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 2px;
+}
+
+.observer-stat-value {
+    font-size: 24px;
+    font-weight: 700;
+    color: #007bff;
+}
+
+.observer-stat-unit {
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+}
+
+.observer-stat-divider {
+    font-size: 16px;
+    color: #cbd5e1;
+    font-weight: 400;
+    margin: 0 12px;
+    align-self: center;
+}
+
+.observer-stat-label {
+    font-size: 16px;
+    font-weight: 500;
+    color: #666;
+    text-align: center;
+}
+
 /* 막대 그래프 카드 (세로 배치) - 가로 폭 최대 활용 */
 .stat-card-bar .stat-content-wrapper {
     display: flex;
@@ -677,13 +729,13 @@ body {
 .stat-card-doughnut .stat-prefix,
 .stat-card-doughnut .stat-suffix {
     font-size: 14px;
-    color: #000;
+    color: #666;
     font-weight: 400;
 }
 
 .stat-card-doughnut .stat-text {
     font-size: 13px;
-    color: #333;
+    color: #666;
     font-weight: 500;
 }
 
@@ -721,13 +773,13 @@ body {
 
 .stat-card-doughnut .stat-normal-text .stat-label-text {
     font-size: 16px;
-    color: #333;
+    color: #666;
     font-weight: 500;
 }
 
 .stat-card-doughnut .stat-error-text .stat-label-text {
     font-size: 16px;
-    color: #333;
+    color: #666;
     font-weight: 500;
 }
 
@@ -748,7 +800,7 @@ body {
 .stat-card-doughnut .stat-normal-text .stat-suffix,
 .stat-card-doughnut .stat-error-text .stat-suffix {
     font-size: 16px;
-    color: #333;
+    color: #666;
     font-weight: 400;
 }
 
@@ -827,7 +879,7 @@ body {
 }
 
 .catch-main-number {
-    font-size: 22px;
+    font-size: 28px;
     font-weight: 700;
     color: #007bff;
     line-height: 1.2;
@@ -838,7 +890,7 @@ body {
 }
 
 .catch-unit {
-    font-size: 14px;
+    font-size: 18px;
     color: #333;
     font-weight: 400;
 }
@@ -851,15 +903,15 @@ body {
 }
 
 .catch-label-text {
-    font-size: 13px;
-    color: #000;
+    font-size: 16px;
+    color: #666;
     font-weight: 500;
     text-align: center;
 }
 
 .stat-label {
     font-size: 16px;
-    color: #666;
+    color: #000;
     font-weight: 500;
     text-align: left;
     flex: 1;
@@ -1684,10 +1736,27 @@ body {
 }
 
 .vessel-list-overlay h4 {
-    font-size: 13px;
+    font-size: 16px;
     font-weight: 700;
     color: #2563eb;
     margin-bottom: 4px;
+}
+
+.vessel-list-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.vessel-list-toggle-icon {
+    transition: transform 0.2s ease;
+    color: #2563eb;
+}
+
+.vessel-label-list.collapsed {
+    display: none;
 }
 
 .vessel-label-list {
@@ -1706,6 +1775,21 @@ body {
     border-radius: 6px;
     background: #f8fafc;
     transition: all 0.2s ease;
+    position: relative;
+}
+
+.vessel-item-toggle-icon {
+    color: #2563eb;
+    flex-shrink: 0;
+}
+
+.vessel-sublist {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 6px;
+    padding: 8px;
+    margin: 4px 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    z-index: 10;
 }
 
 .vessel-label-item:hover {
@@ -1721,7 +1805,7 @@ body {
 }
 
 .vessel-label-name {
-    font-size: 12px;
+    font-size: 15px;
     font-weight: 500;
     color: #334155;
     white-space: nowrap;
@@ -1744,7 +1828,7 @@ body {
 }
 
 .vessel-stat-overlay h3 {
-    font-size: 12px;
+    font-size: 16px;
     font-weight: 700;
     color: #2563eb;
     margin-bottom: 8px;
@@ -1841,13 +1925,23 @@ body {
 
 .map-dot {
     position: absolute;
-    width: 14px;
-    height: 14px;
+    width: 16px;
+    height: 16px;
     border-radius: 50%;
-    border: 3px solid #ffffff;
+    border: none;
     box-shadow: 0 2px 6px rgba(0,0,0,0.3);
     cursor: pointer;
     transition: all 0.2s ease;
+}
+
+.map-dot-red {
+    background: #ff8787;
+    box-shadow: 0 0 8px rgba(243, 1, 1, 0.87)0 2px 6px rgba(0,0,0,0.3);
+}
+
+.map-dot-green {
+    background: rgb(1, 255, 87);
+    box-shadow: 0 0 8px rgba(20, 255, 87, 0.6), 0 2px 6px rgba(0,0,0,0.3);
 }
 
 .map-dot:hover {

@@ -22,7 +22,7 @@
             <button>옵서버 Review</button>
             <button>장비 관리</button>
             <button>조업 정보</button>
-            <button>선박 모니터링</button>
+            <button>장비 모니터링</button>
         </div>
         <!-- 알림 아이콘 -->
         <div class="notification-icon-wrapper">
@@ -121,16 +121,58 @@
                             <div class="stat-date-ref">업데이트: 2025.11.03</div>
                         </div>
                         <div class="stat-content-wrapper">
-                            <div class="stat-chart-container">
-                                <canvas id="observerChart"></canvas>
-                                <div class="chart-center-text">71%</div>
+                            <div class="stat-text-container" style="width: 100%;">
+                                <div class="observer-stat-group">
+                                    <div class="observer-stat-item">
+                                        <div class="observer-stat-numbers">
+                                            <span class="observer-stat-value">142</span>
+                                            <span class="observer-stat-unit">건</span>
+                                        </div>
+                                        <div class="observer-stat-label">완료</div>
+                                    </div>
+                                    <span class="observer-stat-divider">|</span>
+                                    <div class="observer-stat-item">
+                                        <div class="observer-stat-numbers">
+                                            <span class="observer-stat-value" style="color: #fbbf24;">78</span>
+                                            <span class="observer-stat-unit">건</span>
+                                        </div>
+                                        <div class="observer-stat-label">검토중</div>
+                                    </div>
+                                    <span class="observer-stat-divider">|</span>
+                                    <div class="observer-stat-item">
+                                        <div class="observer-stat-numbers">
+                                            <span class="observer-stat-value" style="color: #000000;">200</span>
+                                            <span class="observer-stat-unit">건</span>
+                                        </div>
+                                        <div class="observer-stat-label">전체</div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="stat-text-container">
-                                <div class="stat-number">
-                                    <span class="stat-main-number">142</span>
-                                    <span class="stat-divider">/</span>
-                                    <span class="stat-secondary-number">200</span>
-                                    <span class="stat-suffix">건</span>
+                        </div>
+                    </div>
+                    <div class="stat-card stat-card-doughnut">
+                        <div class="stat-header">
+                            <div class="stat-label">어획물</div>
+                            <div class="stat-date-ref">업데이트: 2025.11.10 15:00:00 UTC</div>
+                        </div>
+                        <div class="stat-content-wrapper">
+                            <div class="stat-text-container" style="width: 100%; display: flex; justify-content: center; align-items: center;">
+                                <div class="catch-items">
+                                    <div class="catch-item-group">
+                                        <div class="catch-numbers">
+                                            <span class="catch-main-number">142</span>
+                                            <span class="catch-unit">마리</span>
+                                        </div>
+                                        <div class="catch-label-text">목표종</div>
+                                    </div>
+                                    <span class="catch-divider">|</span>
+                                    <div class="catch-item-group">
+                                        <div class="catch-numbers">
+                                            <span class="catch-main-number catch-bycatch">5</span>
+                                            <span class="catch-unit">마리</span>
+                                        </div>
+                                        <div class="catch-label-text">부수어획종</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -151,39 +193,8 @@
                                     <span class="stat-main-number">26</span>
                                     <span class="stat-divider">/</span>
                                     <span class="stat-text">총</span>
-                                    <span class="stat-secondary-number">100</span>
+                                    <span class="stat-secondary-number" style="color: #ef4444;">100</span>
                                     <span class="stat-suffix">건</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="stat-card stat-card-doughnut">
-                        <div class="stat-header">
-                            <div class="stat-label">어획물</div>
-                            <div class="stat-date-ref">업데이트: 2025.11.10 15:00:00 UTC</div>
-                        </div>
-                        <div class="stat-content-wrapper">
-                            <div class="stat-chart-container">
-                                <canvas id="catchChart"></canvas>
-                                <div class="chart-center-text">96.6%</div>
-                            </div>
-                            <div class="stat-text-container">
-                                <div class="catch-items">
-                                    <div class="catch-item-group">
-                                        <div class="catch-numbers">
-                                            <span class="catch-main-number">142</span>
-                                            <span class="catch-unit">마리</span>
-                                        </div>
-                                        <div class="catch-label-text">목표종</div>
-                                    </div>
-                                    <span class="catch-divider">|</span>
-                                    <div class="catch-item-group">
-                                        <div class="catch-numbers">
-                                            <span class="catch-main-number catch-bycatch">5</span>
-                                            <span class="catch-unit">마리</span>
-                                        </div>
-                                        <div class="catch-label-text">부수어획종</div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -220,63 +231,75 @@
                 <div class="vessel-section">
                     <div class="map-container">
                         <div class="map-placeholder">
-                            <!-- 활동 선박 오버레이 -->
+                            <!-- 선사명 리스트 오버레이 -->
                             <div class="vessel-list-overlay">
-                                <h4>활동 선박</h4>
+                                <h4 class="vessel-list-title" style="cursor: pointer; display: flex; align-items: center; gap: 8px;">
+                                    <span>선사명</span>
+                                    <svg class="vessel-list-toggle-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="transition: transform 0.2s;">
+                                        <path d="M6 9l6 6 6-6"></path>
+                                    </svg>
+                                </h4>
                                 <div class="vessel-label-list">
                                     <div class="vessel-label-item">
-                                        <span class="vessel-label-color" style="background: #ff6b6b"></span>
-                                        <span class="vessel-label-name">[동원산업]121</span>
+                                        <span class="vessel-label-name">동원수산</span>
+                                        <svg class="vessel-item-toggle-icon" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="transition: transform 0.2s; margin-left: auto;">
+                                            <path d="M6 9l6 6 6-6"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="vessel-sublist" style="display: none;">
+                                        <!-- 하위 리스트 내용 -->
                                     </div>
                                     <div class="vessel-label-item">
-                                        <span class="vessel-label-color" style="background: #ff6b6b"></span>
-                                        <span class="vessel-label-name">[동원산업]134</span>
+                                        <span class="vessel-label-name">동원산업</span>
+                                        <svg class="vessel-item-toggle-icon" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="transition: transform 0.2s; margin-left: auto;">
+                                            <path d="M6 9l6 6 6-6"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="vessel-sublist" style="display: none;">
+                                        <!-- 하위 리스트 내용 -->
                                     </div>
                                     <div class="vessel-label-item">
-                                        <span class="vessel-label-color" style="background: #4ecdc4"></span>
-                                        <span class="vessel-label-name">[동원수산]201</span>
+                                        <span class="vessel-label-name">사조산업</span>
+                                        <svg class="vessel-item-toggle-icon" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="transition: transform 0.2s; margin-left: auto;">
+                                            <path d="M6 9l6 6 6-6"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="vessel-sublist" style="display: none;">
+                                        <!-- 하위 리스트 내용 -->
                                     </div>
                                     <div class="vessel-label-item">
-                                        <span class="vessel-label-color" style="background: #4ecdc4"></span>
-                                        <span class="vessel-label-name">[동원수산]205</span>
+                                        <span class="vessel-label-name">신라교역</span>
+                                        <svg class="vessel-item-toggle-icon" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="transition: transform 0.2s; margin-left: auto;">
+                                            <path d="M6 9l6 6 6-6"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="vessel-sublist" style="display: none;">
+                                        <!-- 하위 리스트 내용 -->
                                     </div>
                                     <div class="vessel-label-item">
-                                        <span class="vessel-label-color" style="background: #ffe66d"></span>
-                                        <span class="vessel-label-name">[사조산업]111</span>
+                                        <span class="vessel-label-name">정일산업</span>
+                                        <svg class="vessel-item-toggle-icon" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="transition: transform 0.2s; margin-left: auto;">
+                                            <path d="M6 9l6 6 6-6"></path>
+                                        </svg>
                                     </div>
-                                    <div class="vessel-label-item">
-                                        <span class="vessel-label-color" style="background: #ffe66d"></span>
-                                        <span class="vessel-label-name">[사조산업]211</span>
-                                    </div>
-                                    <div class="vessel-label-item">
-                                        <span class="vessel-label-color" style="background: #95e1d3"></span>
-                                        <span class="vessel-label-name">[신라교역]301</span>
-                                    </div>
-                                    <div class="vessel-label-item">
-                                        <span class="vessel-label-color" style="background: #95e1d3"></span>
-                                        <span class="vessel-label-name">[신라교역]405</span>
-                                    </div>
-                                    <div class="vessel-label-item">
-                                        <span class="vessel-label-color" style="background: #a8e6cf"></span>
-                                        <span class="vessel-label-name">[정일산업]501</span>
-                                    </div>
-                                    <div class="vessel-label-item">
-                                        <span class="vessel-label-color" style="background: #a8e6cf"></span>
-                                        <span class="vessel-label-name">[정일산업]602</span>
+                                    <div class="vessel-sublist" style="display: none;">
+                                        <!-- 하위 리스트 내용 -->
                                     </div>
                                 </div>
                             </div>
-                            <!-- 어선 통계 카드 -->
+                            <!-- 장비 상태 카드 -->
                             <div class="vessel-stat-overlay">
-                                <h3>어선 통계</h3>
+                                <h3>장비 상태</h3>
                                 <div class="vessel-stat-items">
                                     <div class="vessel-stat-item">
-                                        <span class="vessel-stat-label">조업중</span>
-                                        <span class="vessel-stat-value">-</span>
+                                        <span class="vessel-stat-dot" style="display: inline-block; width: 12px; height: 12px; border-radius: 50%; background: #4ade80; margin-right: 4px;"></span>
+                                        <span class="vessel-stat-label" style="font-size: 16px;">정상</span>
+                                        <span class="vessel-stat-value" style="font-size: 18px;">380</span>
                                     </div>
                                     <div class="vessel-stat-item">
-                                        <span class="vessel-stat-label">비조업중</span>
-                                        <span class="vessel-stat-value">10</span>
+                                        <span class="vessel-stat-dot" style="display: inline-block; width: 12px; height: 12px; border-radius: 50%; background: #ff6b6b; margin-right: 4px;"></span>
+                                        <span class="vessel-stat-label" style="font-size: 16px;">오류</span>
+                                        <span class="vessel-stat-value" style="font-size: 18px;">20</span>
                                     </div>
                                 </div>
                             </div>
@@ -285,36 +308,8 @@
                                 <button class="map-btn">-</button>
                                 <div class="compass">N</div>
                             </div>
-                            <div class="map-dots">
-                                <!-- 동원산업 (빨강 #ff6b6b) -->
-                                <div class="map-dot" style="top: 50%; left: 55%; background: #ff6b6b"></div>
-                                <div class="map-dot" style="top: 58%; left: 62%; background: #ff6b6b"></div>
-                                <!-- 동원수산 (청록 #4ecdc4) -->
-                                <div class="map-dot" style="top: 55%; left: 58%; background: #4ecdc4"></div>
-                                <div class="map-dot" style="top: 63%; left: 65%; background: #4ecdc4"></div>
-                                <!-- 사조산업 (노랑 #ffe66d) -->
-                                <div class="map-dot" style="top: 52%; left: 60%; background: #ffe66d"></div>
-                                <div class="map-dot" style="top: 60%; left: 68%; background: #ffe66d"></div>
-                                <!-- 신라교역 (민트 #95e1d3) -->
-                                <div class="map-dot" style="top: 48%; left: 63%; background: #95e1d3"></div>
-                                <div class="map-dot" style="top: 56%; left: 70%; background: #95e1d3"></div>
-                                <!-- 정일산업 (연두 #a8e6cf) -->
-                                <div class="map-dot" style="top: 54%; left: 66%; background: #a8e6cf"></div>
-                                <div class="map-dot" style="top: 62%; left: 72%; background: #a8e6cf"></div>
-                                
-                                <!-- 가운데 약간 왼쪽 상단 방향 (랜덤 배치) -->
-                                <div class="map-dot" style="top: 38%; left: 42%; background: #ff6b6b"></div>
-                                <div class="map-dot" style="top: 42%; left: 45%; background: #4ecdc4"></div>
-                                <div class="map-dot" style="top: 35%; left: 48%; background: #ffe66d"></div>
-                                <div class="map-dot" style="top: 40%; left: 43%; background: #95e1d3"></div>
-                                <div class="map-dot" style="top: 37%; left: 46%; background: #a8e6cf"></div>
-                                
-                                <!-- 오른쪽 아래 (랜덤 배치) -->
-                                <div class="map-dot" style="top: 65%; left: 68%; background: #ff6b6b"></div>
-                                <div class="map-dot" style="top: 68%; left: 71%; background: #4ecdc4"></div>
-                                <div class="map-dot" style="top: 66%; left: 74%; background: #ffe66d"></div>
-                                <div class="map-dot" style="top: 70%; left: 69%; background: #95e1d3"></div>
-                                <div class="map-dot" style="top: 67%; left: 72%; background: #a8e6cf"></div>
+                            <div class="map-dots" id="mapDots">
+                                <!-- 동그라미는 JavaScript로 동적 생성 -->
                             </div>
                         </div>
                     </div>
@@ -556,6 +551,80 @@
     </div>
 
     <script>
+        // 지도에 랜덤 동그라미 생성 (빨간색 5개, 초록색 30개)
+        function createRandomDots() {
+            const mapDotsContainer = document.getElementById('mapDots');
+            if (!mapDotsContainer) return;
+
+            // 빨간색 동그라미 5개 (오류 상태) - 밝고 반짝이는 빨강, 가운데에서 오른쪽으로 넓게 분포
+            for (let i = 0; i < 5; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'map-dot map-dot-red';
+                // 가운데에서 오른쪽으로 넓게 랜덤 배치 (30% ~ 80% top, 40% ~ 90% left)
+                const top = 30 + Math.random() * 50; // 30% ~ 80% (가운데 세로 영역)
+                const left = 40 + Math.random() * 50; // 40% ~ 90% (가운데부터 오른쪽까지)
+                dot.style.top = top + '%';
+                dot.style.left = left + '%';
+                dot.style.background = 'rgb(255,50,50)'; // 인라인 스타일로 밝은 빨간색 직접 설정
+                mapDotsContainer.appendChild(dot);
+            }
+
+            // 초록색 동그라미 30개 (정상 상태) - 밝고 반짝이는 초록, 가운데에서 오른쪽으로 넓게 분포
+            for (let i = 0; i < 30; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'map-dot map-dot-green';
+                // 가운데에서 오른쪽으로 넓게 랜덤 배치 (30% ~ 80% top, 40% ~ 90% left)
+                const top = 30 + Math.random() * 50; // 30% ~ 80% (가운데 세로 영역)
+                const left = 40 + Math.random() * 50; // 40% ~ 90% (가운데부터 오른쪽까지)
+                dot.style.top = top + '%';
+                dot.style.left = left + '%';
+                dot.style.background = 'rgb(1, 255, 87)'; // 인라인 스타일로 초록색 직접 설정
+                mapDotsContainer.appendChild(dot);
+            }
+        }
+
+        // 페이지 로드 시 동그라미 생성
+        document.addEventListener('DOMContentLoaded', function() {
+            createRandomDots();
+            
+            // 선사명 리스트 토글 기능
+            const vesselListTitle = document.querySelector('.vessel-list-title');
+            const vesselLabelList = document.querySelector('.vessel-label-list');
+            const toggleIcon = document.querySelector('.vessel-list-toggle-icon');
+            
+            if (vesselListTitle && vesselLabelList && toggleIcon) {
+                vesselListTitle.addEventListener('click', function() {
+                    vesselLabelList.classList.toggle('collapsed');
+                    toggleIcon.style.transform = vesselLabelList.classList.contains('collapsed') 
+                        ? 'rotate(-90deg)' 
+                        : 'rotate(0deg)';
+                });
+            }
+
+            // 각 선사 항목별 토글 기능
+            const vesselLabelItems = document.querySelectorAll('.vessel-label-item');
+            vesselLabelItems.forEach((item, index) => {
+                const toggleIcon = item.querySelector('.vessel-item-toggle-icon');
+                // 다음 형제 요소가 sublist인지 확인
+                let sublist = item.nextElementSibling;
+                if (sublist && !sublist.classList.contains('vessel-sublist')) {
+                    sublist = null;
+                }
+                
+                if (toggleIcon) {
+                    item.style.cursor = 'pointer';
+                    item.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        if (sublist) {
+                            const isVisible = sublist.style.display !== 'none';
+                            sublist.style.display = isVisible ? 'none' : 'block';
+                            toggleIcon.style.transform = isVisible ? 'rotate(0deg)' : 'rotate(90deg)';
+                        }
+                    });
+                }
+            });
+        });
+
         // 사용자 메뉴 토글
         const userProfile = document.querySelector('.user-profile');
         const userInfoWrapper = document.querySelector('.user-info-wrapper');
@@ -602,61 +671,9 @@
             });
         }
 
-        // 옵서버 리뷰 - 도넛 차트
-        const observerCtx = document.getElementById('observerChart');
-        if (observerCtx) {
-            new Chart(observerCtx, {
-                type: 'doughnut',
-                data: {
-                    datasets: [{
-                        data: [71, 29],
-                        backgroundColor: ['#007bff', '#e0e0e0'],
-                        borderWidth: 0
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            display: false
-                        },
-                        tooltip: {
-                            enabled: false
-                        }
-                    },
-                    cutout: '70%'
-                }
-            });
-        }
+        // 옵서버 리뷰 - 도넛 차트 제거됨
 
-        // 어획물 - 도넛 차트 (목표종 142, 부수어획종 5)
-        const catchCtx = document.getElementById('catchChart');
-        if (catchCtx) {
-            new Chart(catchCtx, {
-                type: 'doughnut',
-                data: {
-                    datasets: [{
-                        data: [142, 5],
-                        backgroundColor: ['#007bff', '#ef4444'],
-                        borderWidth: 0
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            display: false
-                        },
-                        tooltip: {
-                            enabled: false
-                        }
-                    },
-                    cutout: '70%'
-                }
-            });
-        }
+        // 어획물 - 도넛 차트 제거됨
 
         // 장비 작동률 - 도넛 차트 (380건 정상, 20건 오류)
         const equipmentCtx = document.getElementById('equipmentChart');
